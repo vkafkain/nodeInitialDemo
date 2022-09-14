@@ -11,8 +11,8 @@ app.use(morgan('dev'));
 app.use(express.urlencoded({extended:false}));
 app.use(express.json());
  
-//Rutas
-app.use(require('./routes/route'));
+//Routes
+app.use('/api/user',require('./routes/user'));
 
 //Iniciando el servidor
 app.listen(app.get('port'),()=>{
