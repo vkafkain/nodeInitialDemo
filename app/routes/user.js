@@ -1,7 +1,7 @@
 const { Router } = require('express');
-const userRouter = Router();
+const router = Router();
 
-userRouter.get('/', (req, res) => {  
+router.get('/', (req, res) => {  
     const url =  req.protocol + "://" + req.get('Host') + req.originalUrl
     const data = {
         nom: "Víctor",
@@ -11,4 +11,4 @@ userRouter.get('/', (req, res) => {
     res.json(data);
 });
 
-module.exports = userRouter;
+module.exports = router;
