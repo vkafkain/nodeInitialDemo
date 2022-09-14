@@ -4,5 +4,9 @@
 
 
 
+## Anotacions
+
+Separem les rutes, per aixo fiquem la ruta /api/user, per identidicar que es una API REST
+
 ## Actualitzacions introduïdes: ✅
 
