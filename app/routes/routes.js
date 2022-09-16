@@ -1,18 +1,16 @@
-const { Router } = require('express');
-const router = Router();
-const { user, uploadFile } = require('../controllers/controller');
+const {Router} = require('express');
+const {uploadPost, user} = require('../controllers/controllers');
+const upload = require('../middlewares/middlewares');
+const router =  Router();
 
-//user
+
+//http://localhost:3000/user
 router.get('/user', user);
 
-//upload
-router.post('/upload', uploadFile(), (req, res) =>{
+//http://localhost:3000/upload
+router.post('/upload', upload, uploadPost, (req, res) => {
     console.log(req.file);
-    res.send('ok file upload')
+    res.send('uploaded');
 });
-
-
-
-
 
 module.exports = router;
