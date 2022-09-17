@@ -17,11 +17,9 @@ const uploadPost = (req, res) => {
 
 //time
 const time = (req, res) => {
-    let hourNow = new Date().getHours() + ':'+ new Date().getMinutes()+ ':'+ new Date().getSeconds();
-    let date = new Date().toDateString()
     res.status(200).json({
-        date: date,
-        hour: hourNow
+        date: new Date().toDateString(),
+        hour: new Date().getHours() + ':'+ new Date().getMinutes()+ ':'+ new Date().getSeconds()
     });
 }
 module.exports = { user, uploadPost, time }
