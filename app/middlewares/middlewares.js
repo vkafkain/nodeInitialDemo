@@ -26,12 +26,8 @@ const upload = multer({
 
 //time(cache-control)
 let cacheControl= (req, res, next)=>{
-    if (req.method == 'POST') {
-      res.setHeader("Cache-control", "no-cache");
-  } else {
-      res.setHeader("Cache-control", "no-store");
-  }
-  next();
+    req.method == 'POST'? res.set("Cache-control", "no-cache") : res.set("Cache-control", "no-store");
+    next();
   }
 
 module.exports = {upload, cacheControl};
