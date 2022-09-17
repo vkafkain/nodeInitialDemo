@@ -1,7 +1,7 @@
 const {Router} = require('express');
 const cors = require('cors');
 const {uploadPost, user, time} = require('../controllers/controllers');
-const {upload, cacheControl} = require('../middlewares/middlewares');
+const {upload, cacheControl, authentification} = require('../middlewares/middlewares');
 const router =  Router();
 
 
@@ -16,6 +16,6 @@ router.post('/upload', upload, uploadPost, (req, res) => {
 });
 
 ////http://localhost:3000/time
-router.post('/time', cors(), cacheControl, time);
+router.post('/time', cors(), cacheControl, authentification, time);
 
 module.exports = router;
