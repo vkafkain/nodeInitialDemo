@@ -25,9 +25,24 @@ const upload = multer({
 }).single('images');
 
 //time(cache-control)
-let cacheControl= (req, res, next)=>{
+const cacheControl = (req, res, next)=>{
     req.method == 'POST'? res.set("Cache-control", "no-cache") : res.set("Cache-control", "no-store");
     next();
   }
 
-module.exports = {upload, cacheControl};
+//authentification
+const authentification = (req, res, next)=> {
+    const {user, pass} = req.headers;
+    const admin = "admin";
+    const adminPass = "1234";
+
+    if(admin !== user || adminPass !== pass) {
+        res.status(401).json({
+            error: "Unauthorized"
+        })
+        return;
+    }
+    next();
+}
+
+module.exports = {upload, cacheControl, authentification};
