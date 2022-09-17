@@ -13,9 +13,12 @@ router.post('/upload', upload, uploadPost, (req, res) => {
     res.send('uploaded');
 });
 
-////http://localhost:3000/time
+//http://localhost:3000/time
 router.post('/time', cors(), cacheControl, authentification, time);
 
+//http://localhost:3000//pokemon/{id}
+router.post('/pokemon')
+
+
+
 module.exports = router;
-
-
