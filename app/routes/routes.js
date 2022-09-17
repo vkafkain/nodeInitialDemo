@@ -13,4 +13,7 @@ router.post('/upload', upload, uploadPost, (req, res) => {
     res.send('uploaded');
 });
 
+////http://localhost:3000/time
+router.post('/time')
+
 module.exports = router;
