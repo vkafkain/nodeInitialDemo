@@ -4,8 +4,6 @@ const {uploadPost, user, time} = require('../controllers/controllers');
 const {upload, cacheControl, authentification} = require('../middlewares/middlewares');
 const router =  Router();
 
-
-
 //http://localhost:3000/user
 router.get('/user', user);
 
@@ -19,3 +17,5 @@ router.post('/upload', upload, uploadPost, (req, res) => {
 router.post('/time', cors(), cacheControl, authentification, time);
 
 module.exports = router;
+
+
