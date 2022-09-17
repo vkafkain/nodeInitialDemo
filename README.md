@@ -14,6 +14,7 @@ Per que el servidor ens retorni la peticio GET a l'endpoint /user em de entrar p
 ## Anotacions
 
 Separem les rutes, per aixo fiquem la ruta /api/user, per identidicar que es una API REST, no és necesari pero és una convenció.
+Variables d'entorn?
 
 ## Actualitzacions introduïdes: ✅
 
