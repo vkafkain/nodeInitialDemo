@@ -22,5 +22,9 @@ const time = (req, res) => {
         hour: new Date().getHours() + ':'+ new Date().getMinutes()+ ':'+ new Date().getSeconds()
     });
 }
+
+//pokemon
+
+
 module.exports = { user, uploadPost, time }
 
