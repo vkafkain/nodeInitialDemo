@@ -1,6 +1,7 @@
 const multer = require('multer');
 const path = require('path');
 
+
 //upload
 const storage = multer.diskStorage({
     destination: path.join(__dirname, '../public/uploads'),
@@ -22,5 +23,15 @@ const upload = multer({
         cb("Error: Wrong file type, file has to be jpeg, jpg, png or gif");
     }
 }).single('images');
-  
-module.exports = upload;
+
+//time(cache-control)
+let cacheControl= (req, res, next)=>{
+    if (req.method == 'POST') {
+      res.setHeader("Cache-control", "no-cache");
+  } else {
+      res.setHeader("Cache-control", "no-store");
+  }
+  next();
+  }
+
+module.exports = {upload, cacheControl};
