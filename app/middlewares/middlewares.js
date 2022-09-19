@@ -37,7 +37,7 @@ const authentification = (req, res, next)=> {
 
     if(admin !== user || adminPass !== pass) {
         res.status(401).json({
-            error: "Unauthorized"
+            error: "401 - Unauthorized"
         })
         return;
     }
