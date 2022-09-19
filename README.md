@@ -4,7 +4,7 @@
 
 Necesitem instalar els moduls express, multer, amb el següent codi per la terminal:
 
-    npm i express multer cors
+    npm i express multer cors cross-fetch
 
 
 Per que el servidor ens retorni la peticio GET a l'endpoint /user em de entrar per consola:
