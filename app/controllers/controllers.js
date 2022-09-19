@@ -1,3 +1,5 @@
+const fetch = require('cross-fetch')
+
 //user
 const user = (req, res) => {
     let url = req.protocol + "://" + req.get('Host') + req.originalUrl
@@ -24,7 +26,27 @@ const time = (req, res) => {
 }
 
 //pokemon
+const pokemon = (req, res) => {
+    const { id } = req.params;
+    fetch('https://pokeapi.co/api/v2/pokemon/'+id)
+    .then(res => {
+        if (res.status >= 400) {
+        throw new Error("400: Bad response from server");
+    }
+    return res.json();
+  })
+  .then(data => {
+    res.send({
+                name: data.name,
+                height: data.height,
+                weight: data.weight
+        
+    });
+}).catch(err => {
+    console.error(err);
+  });
+};
 
 
-module.exports = { user, uploadPost, time }
+module.exports = { user, uploadPost, time, pokemon }
 
