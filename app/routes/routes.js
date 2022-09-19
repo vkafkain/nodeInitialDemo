@@ -1,6 +1,6 @@
 const {Router} = require('express');
 const cors = require('cors');
-const {uploadPost, user, time} = require('../controllers/controllers');
+const {uploadPost, user, time, pokemon} = require('../controllers/controllers');
 const {upload, cacheControl, authentification} = require('../middlewares/middlewares');
 const router =  Router();
 
@@ -17,8 +17,7 @@ router.post('/upload', upload, uploadPost, (req, res) => {
 router.post('/time', cors(), cacheControl, authentification, time);
 
 //http://localhost:3000//pokemon/{id}
-router.post('/pokemon')
-
+router.get('/pokemon/:id', pokemon);
 
 
 module.exports = router;
