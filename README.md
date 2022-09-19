@@ -15,7 +15,6 @@ Un cop hem instal·lat els diferents paquets hem d'iniciar el servidor amb la se
 ## POSTMAN 📬
 
 Per executar d'una manera ràpida i fàcil totes les diferents indicacions dels exercicis farem servir Postman un programa que ens permet fer diferents peticions al servidor. Es pot fer servir des del navegador o també el podem instal·lar com a programa.
-
 El podem descarregar del següent enllaças:
 
 [Enllaç Postman](https://www.postman.com/downloads/)
