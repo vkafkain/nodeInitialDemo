@@ -59,6 +59,16 @@
 			"request": {
 				"method": "POST",
 				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "images",
+							"type": "file",
+							"src": "/C:/Users/usuario/Desktop/nodeInitialDemo/images/test.txt"
+						}
+					]
+				},
 				"url": {
 					"raw": "http://localhost:3000/upload",
 					"protocol": "http",
