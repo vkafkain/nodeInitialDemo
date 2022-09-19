@@ -36,10 +36,29 @@
 						{
 							"key": "images",
 							"type": "file",
-							"src": "images/resaca.png"
+							"src": "/C:/Users/usuario/Desktop/nodeInitialDemo/images/resaca.png"
 						}
 					]
 				},
+				"url": {
+					"raw": "http://localhost:3000/upload",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"upload"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Ex1N2testTXT",
+			"request": {
+				"method": "POST",
+				"header": [],
 				"url": {
 					"raw": "http://localhost:3000/upload",
 					"protocol": "http",
