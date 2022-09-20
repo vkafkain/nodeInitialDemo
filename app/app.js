@@ -12,7 +12,7 @@ app.use(express.urlencoded({extended:false}));
 app.use(express.json());
 
 //Routes
-app.use('/', route);
+// app.use('/', route);
 
 //Start the server
 app.listen(app.get('port'), () => {

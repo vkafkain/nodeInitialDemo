@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const PlayerSchema = new Schema({
+const PlayerSchema = Schema({
     name: { type: String, unique: true },
     date: { type: Date, default: Date.now},
     rounds: { type: Number, default: 0},
