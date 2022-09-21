@@ -13,6 +13,7 @@
   "dependencies": {
     "dotenv": "^9.0.2",
     "mongoose": "^6.6.1",
+    "sequelize": "^6.23.0",
     "uniqid": "^5.4.0"
   },
   "devDependencies": {
