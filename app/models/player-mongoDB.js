@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const uniqid = require('uniqid');
 
 const PlayerSchema = Schema({
     name: { type: String, unique: true },
@@ -14,6 +15,14 @@ const PlayerSchema = Schema({
         result: { type: String} 
     }]
 });
+
+PlayerSchema.statics.anonimous = function (name) {
+    if (name == null || name == '') {
+        return uniqid('ANONIM-');
+    } else {
+        return name;
+    }
+}
 
 
 module.exports = mongoose.model('Player', PlayerSchema);
