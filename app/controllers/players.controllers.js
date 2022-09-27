@@ -27,6 +27,7 @@ const getPlayer = async (req, res) => {
 
 }
 
+
 const createPlayer = async (req, res) => {
     try {
         const {name} = req.body
