@@ -1,5 +1,5 @@
 const express = require('express');
-const playerRoutes = require('./routes/players.routes')
+const playerRoutes = require('./routes/routes')
 const app = express();
 
 //middleware
