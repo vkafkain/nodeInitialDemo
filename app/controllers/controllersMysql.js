@@ -1,4 +1,6 @@
 const Player = require('../models/Player-SQL');
+const Games = require('../models/game-SQL');
+const roll = require('../models/letsRoll');
 
 
 const getPlayers = async (req, res) => {
@@ -27,10 +29,10 @@ const getPlayer = async (req, res) => {
 
 }
 
-
 const createPlayer = async (req, res) => {
     try {
         const {name} = req.body
+        name ? true : name = 'ANONYMOUS';
         const newPlayer = await Player.create({
             name,
         });

@@ -1,5 +1,5 @@
 const {Router} = require('express');
-const { getPlayers, createPlayer, updatePlayer } = require('../controllers/players.controllers')
+const { getPlayers, createPlayer, updatePlayer } = require('../controllers/controllersMysql')
 const router =  Router();
 
 //GET /players: retorna el llistat de tots els jugadors/es del sistema amb el seu percentatge d’èxits.
