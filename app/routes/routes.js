@@ -8,9 +8,6 @@ router.get('/players', getPlayers);
 router.post('/players', createPlayer);
 //PUT /players/{id}: modifica el nom del jugador/a.
 router.put('/players/:id', updatePlayer);
-
-
-
-
+//POST /games/{id}: un jugador/a específic realitza una tirada.
 
 module.exports = router;
