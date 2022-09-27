@@ -1,5 +1,6 @@
 const { DataTypes } = require('sequelize');
-const sequelize = require('../config/connectionSQL');
+const sequelize = require('../database/db_sql');
+const Game = require('../models/Game-SQL');
 
 const Player = sequelize.define('Player', {
     id: {
@@ -20,12 +21,22 @@ const Player = sequelize.define('Player', {
         defaultValue: 0
     },
     winRate: {
-        type: DataTypes.DECIMAL(6, 2),
+        type: DataTypes.DECIMAL(7, 2),
         defaultValue: 0
     }
 },
 {
     tableName: 'players'
 });
+
+Player.hasMany(Game, {
+    foreignKey: 'projectId',
+    sourceKey: "id"
+})
+Game.hasMany(Game, {
+    foreignKey: 'projectId',
+    sourceKey: "id"
+})
+
 
 module.exports = Player;
