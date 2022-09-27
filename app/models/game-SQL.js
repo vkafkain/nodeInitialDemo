@@ -8,9 +8,6 @@ const Game = db.define('Game', {
       autoIncrement: true,
       primaryKey: true
     },
-    idPlayer:{
-      type: DataTypes.INTEGER,
-    },
     dice1: {
       type: DataTypes.INTEGER
     },

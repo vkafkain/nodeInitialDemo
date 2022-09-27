@@ -30,11 +30,11 @@ const Player = sequelize.define('Player', {
 });
 
 Player.hasMany(Game, {
-    foreignKey: 'projectId',
+    foreignKey: 'playerId',
     sourceKey: "id"
 })
 Game.hasMany(Game, {
-    foreignKey: 'projectId',
+    foreignKey: 'playerId',
     sourceKey: "id"
 })
 

@@ -1,10 +1,6 @@
 const app = require('./app')
 const sequelize = require('./database/db_sql');
 
-const Player = require('./models/Player-SQL');
-const Game = require('./models/Game-SQL');
-
-
 async function main() {
   try{  
     await sequelize.sync({force: true})
