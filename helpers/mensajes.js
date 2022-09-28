@@ -5,20 +5,14 @@ const { controllersENV } = require('../config');
 const { createUser } = require( controllersENV );
 
 
-function crearUsuario(){
-    const questions = [
+const newUser = [
         {
           type: 'input',
           name: 'name',
           message: `Welcome to the TO-DO List \nPlease, enter your username`,
         }
     ]
-    
-    inquirer.prompt(questions).then((answers) => {
-        createUser( answers );
-    });
-}
-    
+
 const preguntas = [
         {
             type: 'list',
@@ -52,6 +46,13 @@ const preguntas = [
             ] 
         }
     ]
+
+const creacionUsuario = async () => {
+    const name  = await inquirer.prompt(newUser).then((answers) => {
+        createUser(answers)
+    });
+    return name;
+}
 
 
 
@@ -102,5 +103,4 @@ const leerInput = async () => {
 
 
 
-
-module.exports = { mostrarMenu, pausa, leerInput, crearUsuario };
+module.exports = { creacionUsuario, mostrarMenu, pausa, leerInput };

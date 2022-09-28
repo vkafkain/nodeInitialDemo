@@ -1,16 +1,36 @@
 require('colors');
 const { dbENV } = require('./config');
 const { connectDB } = require( dbENV );
-const { mostrarMenu, pausa, leerInput, crearUsuario } = require('./helpers/mensajes');
+const { mostrarMenu, pausa, leerInput, creacionUsuario } = require('./helpers/mensajes');
 // const tareas = require('./controllers/tareas');
-const { default: inquirer } = require('inquirer');
+const inquirer = require('inquirer');
 
 
 const main = async () =>{ 
-    connectDB()
-    crearUsuario()
+    
+    await creacionUsuario();
+    // await mostrarMenu();
 
-}
+    let opt;
+    let tarea;
+
+    do {
+
+        opt = await mostrarMenu();
+
+        switch (opt) {
+            case '1':
+                const nombreTarea = await input('Titulo: ')
+                const descripcion = await input('Descripción: ');
+
+
+        }
+
+
+
+    }
+
+};
 
 
     
