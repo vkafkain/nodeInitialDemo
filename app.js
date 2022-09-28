@@ -1,29 +1,22 @@
 require('colors');
 const { dbENV } = require('./config');
 const { connectDB } = require( dbENV );
-const { inquirerUser } = require( './helpers/inquirer-user' );
-const { mostrarMenu, pausa, leerInput } = require('./helpers/mensajes');
-const tareas = require('./controllers/tareas');
+const { mostrarMenu, pausa, leerInput, crearUsuario } = require('./helpers/mensajes');
+// const tareas = require('./controllers/tareas');
+const { default: inquirer } = require('inquirer');
 
 
-const main = async () =>{
-    
-    let opt = '';
-    const tareas = new Tareas();
-
-do{
-    opt = await mostrarMenu();
-
-    switch (opt) {
-        case '1': //Crear tarea
-        const desc = await leerInput('Descripción:')
-        tareas.crearTarea(desc);
-        break;
-    }
-    await pausa();
-}while (opt !== '0');
+const main = async () =>{ 
+    connectDB()
+    crearUsuario()
 
 }
 
+
+    
+
 main();
 
+/* inquirer.prompt(questions).then((answers) => {
+    createUser( answers );
+  }); */

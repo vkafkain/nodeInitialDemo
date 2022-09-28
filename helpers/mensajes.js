@@ -1,40 +1,58 @@
 const colors = require('colors');
 const inquirer = require('inquirer');
 const { resolve } = require('path');
+const { controllersENV } = require('../config');
+const { createUser } = require( controllersENV );
 
+
+function crearUsuario(){
+    const questions = [
+        {
+          type: 'input',
+          name: 'name',
+          message: `Welcome to the TO-DO List \nPlease, enter your username`,
+        }
+    ]
+    
+    inquirer.prompt(questions).then((answers) => {
+        createUser( answers );
+    });
+}
+    
 const preguntas = [
-    {
-        type: 'list',
-        name: 'option',
-        message: '¿Que desea hacer?',
-        choices: [
-            {
-                value: '1',
-                name: `${'1.'.green} Crear tarea`
-            },
-            {   
-                value: '2',
-                name: `${'2.'.green} Ver tarea`
-            },
-            {
-                value: '3',
-                name: `${'3.'.green} Ver tareas completadas`
-            },
-            {
-                value: '4',
-                name: `${'4.'.green} Ver tareas pendientes`
-            },
-            {
-                value: '5',
-                name: `${'5.'.green} Completar tareas`
-            },
-            {
-                value: '0',
-                name: `${'6.'.green} Salir`
-            }
-        ] 
-    }
-]
+        {
+            type: 'list',
+            name: 'option',
+            message: '¿Que desea hacer?',
+            choices: [
+                {
+                    value: '1',
+                    name: `${'1.'.green} Crear tarea`
+                },
+                {   
+                    value: '2',
+                    name: `${'2.'.green} Actualizar tarea`
+                },
+                {
+                    value: '3',
+                    name: `${'3.'.green} Borrar tarea`
+                },
+                {
+                    value: '4',
+                    name: `${'4.'.green} Ver tareas todas las tareas`
+                },
+                {
+                    value: '5',
+                    name: `${'5.'.green} Ver una tarea`
+                },
+                {
+                    value: '0',
+                    name: `${'6.'.green} Salir`
+                }
+            ] 
+        }
+    ]
+
 
 
 const mostrarMenu = async() => {
@@ -71,17 +89,18 @@ const leerInput = async () => {
         message,
         validate(value) {
             if (value.length === 0) {
-                return 'Introduzca algún valor'
+                return 'Introduzca algún valor';
             }
-            return true
+            return true;
             }
         }
     ]
 
     const { desc } = await inquirer.prompt(question);
+    return desc;
 };
 
 
 
 
-module.exports = { mostrarMenu, pausa, leerInput };
+module.exports = { mostrarMenu, pausa, leerInput, crearUsuario };
