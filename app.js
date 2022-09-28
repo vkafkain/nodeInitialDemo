@@ -2,26 +2,28 @@ require('colors');
 const { dbENV } = require('./config');
 const { connectDB } = require( dbENV );
 const { inquirerUser } = require( './helpers/inquirer-user' );
-const { mostrarMenu, pausa } = require('./helpers/mensajes');
+const { mostrarMenu, pausa, leerInput } = require('./helpers/mensajes');
+const tareas = require('./controllers/tareas');
 
-console.clear()
 
-// main function
-const main = async () => {
-    try {
-        
-        // Check if Database Exists
-        await connectDB();
-        // Check if User Exists, if not, create a new one
-        await inquirerUser();
-        
-        // mostrarMenu();
-        // pausa();
-
-        
-    } catch (error) {
-        console.log(error);
-    }
-};
+const main = async () =>{
     
-main()
+    let opt = '';
+    const tareas = new Tareas();
+
+do{
+    opt = await mostrarMenu();
+
+    switch (opt) {
+        case '1': //Crear tarea
+        const desc = await leerInput('Descripción:')
+        tareas.crearTarea(desc);
+        break;
+    }
+    await pausa();
+}while (opt !== '0');
+
+}
+
+main();
+
