@@ -1,19 +1,37 @@
-const colors = require('colors');
 const inquirer = require('inquirer');
 const { resolve } = require('path');
 const { controllersENV } = require('../config');
 const { createUser } = require( controllersENV );
+
+const loguin = [
+    {
+        type: 'checkbox',
+        name: 'log',
+        message:'Introduzca su usuario o cree un nuevo usuario',
+        choices: [
+            {
+                value: '1',
+                name: 'Nuevo Usuario'
+            },
+            {
+                value: '2',
+                name: 'Usuario registrado',
+            }
+        ]
+    }
+];
+    
 
 
 const newUser = [
         {
           type: 'input',
           name: 'name',
-          message: `Welcome to the TO-DO List \nPlease, enter your username`,
+          message: `Welcome to the TO-DO List \nPlease, enter your username\n`,
         }
     ]
 
-const preguntas = [
+const menuQuestion = [
         {
             type: 'list',
             name: 'option',
@@ -45,16 +63,65 @@ const preguntas = [
                 }
             ] 
         }
-    ]
+    ];
+
+const newTask = [
+    {
+        type: 'input',
+        name: 'descripcion',
+        message: "Introduzca la descripcion de la tarea:\n"
+    },
+    {
+        type: 'list',
+        name: 'estado',
+        message: "¿En que estado está la tarea?:",
+        choices:["pendiente", "empezada", "finalizada"]
+    },
+]
+
+const taskOption = async() => {
+    const { name } = await inquirer.prompt(newTask);
+    console.log("Tarea creada con éxito");
+    return name
+    ;
+}
+
+const menuAnswers = async() => {
+    
+    let option = await mostrarMenu();
+    
+    switch (option) {
+        case '1': 
+          let answer = await taskOption();
+            break;
+        case '2':
+          let taskList = await mostrarTasks();
+            break;
+
+    }
+}
+
+
+const loguinMenu = async () => {
+    const { log } = await inquirer.prompt(loguin)
+    return log;
+}
+
+const userType = async () => {
+
+    let option = await loguinMenu()
+    if(option === '1') {
+        creacionUsuario();
+    }else {
+        loginUsuario();
+    }
+};
 
 const creacionUsuario = async () => {
     const name  = await inquirer.prompt(newUser).then((answers) => {
         createUser(answers)
     });
-    return name;
 }
-
-
 
 const mostrarMenu = async() => {
   
@@ -63,10 +130,14 @@ const mostrarMenu = async() => {
     console.log('  Seleccione una opción'.green);
     console.log('===========================\n'.green);
     
-    const { option } = await inquirer.prompt(preguntas)
+    const { option } = await inquirer.prompt(menuQuestion)
 
     return option;
  
+};
+
+const listaTareas = async (tasks = []) => {
+
 };
 
 const pausa = async () =>{
@@ -82,25 +153,5 @@ const pausa = async () =>{
     await inquirer.prompt(question);
 };
 
-const leerInput = async (message) => {
-    const question = [
-    {
-        type: 'input',
-        name: 'desc',
-        message,
-        validate(value) {
-            if (value.length === 0) {
-                return 'Introduzca algún valor';
-            }
-            return true;
-            }
-        }
-    ]
 
-    const { desc } = await inquirer.prompt(question);
-    return desc;
-};
-
-
-
-module.exports = { creacionUsuario, mostrarMenu, pausa, leerInput };
+module.exports = { creacionUsuario, mostrarMenu, pausa, loguinMenu, menuAnswers, userType, listaTareas }
