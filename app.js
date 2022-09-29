@@ -7,28 +7,28 @@ const inquirer = require('inquirer');
 
 
 const main = async () =>{ 
-    
+    await connectDB();
     await creacionUsuario();
-    // await mostrarMenu();
+    await mostrarMenu();
 
-    let opt;
-    let tarea;
+    // let opt;
+    // let tarea;
 
-    do {
+    // do {
 
-        opt = await mostrarMenu();
+    //     opt = await mostrarMenu();
 
-        switch (opt) {
-            case '1':
-                const nombreTarea = await input('Titulo: ')
-                const descripcion = await input('Descripción: ');
-
-
-        }
+    //     switch (opt) {
+    //         case '1':
+    //             const nombreTarea = await input('Titulo: ')
+    //             const descripcion = await input('Descripción: ');
 
 
+    //     }
 
-    }
+
+
+    // }
 
 };
 
@@ -37,6 +37,3 @@ const main = async () =>{
 
 main();
 
-/* inquirer.prompt(questions).then((answers) => {
-    createUser( answers );
-  }); */

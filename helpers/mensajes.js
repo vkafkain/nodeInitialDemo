@@ -82,7 +82,7 @@ const pausa = async () =>{
     await inquirer.prompt(question);
 };
 
-const leerInput = async () => {
+const leerInput = async (message) => {
     const question = [
     {
         type: 'input',
@@ -103,4 +103,4 @@ const leerInput = async () => {
 
 
 
-module.exports = { creacionUsuario, mostrarMenu, pausa, leerInput };
+module.exports = { creacionUsuario, mostrarMenu, pausa, leerInput, detallesTarea };

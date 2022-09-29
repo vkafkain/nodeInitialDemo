@@ -10,7 +10,7 @@ const createUser = async ( answer ) => {
 
         if (findUser == undefined) {
             const newUser = {
-                user: answer,
+                user: answer.name,
                 tasks: [],
             };
 
