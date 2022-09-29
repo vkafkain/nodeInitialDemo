@@ -6,11 +6,11 @@ const createUser = async ( answer ) => {
         let data = await readFile('./databases/database.json', 'utf8');
         data = JSON.parse(data);
 
-        const findUser = data.users.find( user => user.username == answer );
+        const findUser = data.users.find( user => user.name == answer.name );
 
         if (findUser == undefined) {
             const newUser = {
-                user: answer,
+                name: answer.name,
                 tasks: [],
             };
 
