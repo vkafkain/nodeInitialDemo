@@ -103,4 +103,4 @@ const leerInput = async (message) => {
 
 
 
-module.exports = { creacionUsuario, mostrarMenu, pausa, leerInput, detallesTarea };
+module.exports = { creacionUsuario, mostrarMenu, pausa, leerInput };
