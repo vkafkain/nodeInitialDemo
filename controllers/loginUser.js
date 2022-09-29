@@ -24,7 +24,7 @@ const loginUser = async () => {
 
         if ( findUser !== undefined ) {
             console.log('User found!');
-            mostrarMenu();
+            mostrarMenu( findUser );
         }
     } catch (error) {
         console.log('User not found!');

@@ -32,7 +32,7 @@ const createUser = async () => {
             await writeFile('./databases/database.json', data);
 
             console.log('New User created!');
-            mostrarMenu();
+            mostrarMenu( findUser );
         }
     } catch (error) {
         console.log('User already exists');
