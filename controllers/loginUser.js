@@ -1,8 +1,8 @@
 const { readFile } = require('fs/promises');
 const inquirer = require( 'inquirer' );
-const { mostrarMenu, inquirerUser } = require('./helpers/mensajes.js');
+const { mostrarMenu } = require('./helpers/mensajes.js');
 
-// Create Task
+// Login
 const loginUser = async () => {
     try {
         let data = await readFile('./databases/database.json', 'utf8');
@@ -28,7 +28,7 @@ const loginUser = async () => {
         }
     } catch (error) {
         console.log('User not found!');
-        inquirerUser();
+        loginUser();
     }
 };
 

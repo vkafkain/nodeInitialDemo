@@ -1,7 +1,7 @@
 const { writeFile, readFile } = require('fs/promises');
 const inquirer = require( 'inquirer' );
 
-// Create Task
+// Delete Task
 const deleteTask = async ( userLogin ) => {
     try {
         let data = await readFile('./databases/database.json', 'utf8');
