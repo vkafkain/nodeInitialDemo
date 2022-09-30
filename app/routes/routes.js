@@ -1,5 +1,5 @@
 const {Router} = require('express');
-const { getPlayers, createPlayer, updatePlayer, playerRoll } = require('../controllers/controllersMysql')
+const { getPlayers, createPlayer, updatePlayer, playerRoll, deleteGames } = require('../controllers/controllersMysql')
 const router =  Router();
 
 //GET /players: retorna el llistat de tots els jugadors/es del sistema amb el seu percentatge d’èxits.
@@ -11,6 +11,6 @@ router.put('/players/:id', updatePlayer);
 //POST /games/{id}: un jugador/a específic realitza una tirada.
 router.post('/games/:id', playerRoll);
 //DELETE /games/{id}: elimina les tirades del jugador/a.
-
+router.delete('/games/:id', deleteGames)
 
 module.exports = router;
