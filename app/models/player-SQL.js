@@ -29,14 +29,13 @@ const Player = sequelize.define('Player', {
     tableName: 'players'
 });
 
-Player.hasMany(Game, {
-    foreignKey: 'playerId',
-    sourceKey: "id"
-})
-Game.hasMany(Game, {
-    foreignKey: 'playerId',
-    sourceKey: "id"
-})
+
+Player.hasMany(Game, {onDelete:'cascade'});
+Game.belongsTo(Player);
+
+
+
+
 
 
 module.exports = Player;

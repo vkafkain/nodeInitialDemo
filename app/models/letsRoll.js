@@ -1,4 +1,4 @@
-function roll() {
+function rollDices() {
     const dice1 = Math.floor(6* Math.random()) + 1;
     const dice2 = Math.floor(6 * Math.random()) + 1;
     const veredict = dice1 + dice2 === 7 ? 'win' : 'lose'
@@ -6,4 +6,4 @@ function roll() {
 };
 
 
-module.exports = roll;
+module.exports = rollDices;

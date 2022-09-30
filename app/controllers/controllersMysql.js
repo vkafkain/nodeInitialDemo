@@ -1,6 +1,8 @@
 const Player = require('../models/Player-SQL');
-const Games = require('../models/game-SQL');
-const roll = require('../models/letsRoll');
+const Game = require('../models/game-SQL');
+const Sequelize = require('sequelize');
+const rollDices = require('../models/letsRoll');
+
 
 
 const getPlayers = async (req, res) => {
@@ -58,5 +60,42 @@ const updatePlayer = async (req, res) => {
     }
 }
 
+const playerRoll = async(req, res) => {
+    const playerId = req.params.id
+    const { dice1, dice2, rollScore, veredict } = rollDices();
 
-module.exports = { getPlayers, createPlayer, updatePlayer, getPlayer };
+    try {
+        const roll = await Game.create({ dice1, dice2, rollScore, veredict, playerId })
+    
+    let arr = [];
+
+    if(veredict === 'win') {
+        Player.increment(['games', 'gamesWin'], {where: { id: playerId } });
+    }
+    if(veredict === 'lose') {
+        Player.increment(['games'],{ where: { id: playerId} });
+    }
+
+    const player = await Player.findAll( { attributes: [ 'games', 'gamesWin'], where: { id: playerId }} );
+
+    arr.push(player);
+
+    const { games, gamesWin} = arr[0][0].dataValues;
+
+    const winRate = (gamesWin / games) * 100
+    await Player.update({ winRate }, { where: { id: playerId }});
+
+    const playerRolled = await Player.findAll({ attributes: ['name'], where: { id: playerId}});
+
+    res.status(200).json({
+        playerRolled,
+        roll
+    });
+    } catch (error){
+        return res.status(500).json({ message: error.message })
+    }
+
+}
+
+
+module.exports = { getPlayers, createPlayer, updatePlayer, getPlayer, playerRoll };
