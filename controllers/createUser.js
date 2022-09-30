@@ -1,29 +1,17 @@
 const { writeFile, readFile } = require('fs/promises');
-const { mostrarMenu } = require('./helpers/mensajes.js');
+const { taskOptions, loguinUser } = require('../helpers/menu.js');
 
 // Create User
-const createUser = async () => {
+const createUser = async ( User ) => {
     try {
         let data = await readFile('./databases/database.json', 'utf8');
         data = JSON.parse(data);
 
-        const questions = [
-            {
-                type: 'input',
-                name: 'name',
-                message: '¿Cual es tu nombre?'
-              }
-        ]
-        
-        inquirer.prompt(questions).then((answers) => {
-          return answers;
-        });
-
-        const findUser = data.users.find( user => user.name == answers.name );
+        const findUser = data.users.find( user => user.name == User.name );
 
         if (findUser == undefined) {
             const newUser = {
-                name: answer.name,
+                name: User.name,
                 tasks: [],
             };
 
@@ -32,11 +20,11 @@ const createUser = async () => {
             await writeFile('./databases/database.json', data);
 
             console.log('New User created!');
-            mostrarMenu( findUser );
+            taskOptions( findUser );
         }
     } catch (error) {
         console.log('User already exists');
-        createUser();
+        loguinUser();
     }
 };
 

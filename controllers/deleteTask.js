@@ -9,40 +9,45 @@ const deleteTask = async ( userLogin ) => {
 
         const findUser = data.users.find( user => user.name == userLogin.name );
 
+        const titleTasks = [];
+        findUser.tasks.forEach(task => {
+            titleTasks.push( task.titulo );
+        });
+
         const questions = [
             {
-                type: 'confirm',
+                type: 'list',
                 name: 'deleteTasks',
                 message: '¿Quieres borrar todas tus tareas?',
-                default: false,
+                choices: [ 'Sì', 'No' ],
               },
               {
                 type: 'rawlist',
                 name: 'deleteOneTask',
                 message: `¿Cual tarea quieres borrar?`,
-                choices: findUser.tasks 
+                choices: titleTasks, 
               },  
- ,       ]
+        ]
         
-        inquirer.prompt(questions).then((answers) => {
+        await inquirer.prompt(questions).then((answers) => {
           return answers;
         });
 
 
-        if ( (findUser !== undefined) && (answers.deleteTasks === true) ) {
+        if ( (findUser !== undefined) && (answers.deleteTasks === 'Sì') ) {
             findUser.tasks = [];
             data = JSON.stringify(data);
             await writeFile('./databases/database.json', data);
 
             console.log('Tasks deleted!');
         }
-        if ( (findUser !== undefined) && (answers.deleteTasks === false) ) {
-            const index = findUser.tasks.findIndex( (task) => task === answers.deleteOneTask )
+        if ( (findUser !== undefined) && (answers.deleteTasks === 'No') ) {
+            const index = findUser.tasks.findIndex( (task) => task === answers.deleteOneTask );
             findUser.tasks.splice( index, 1 );
             data = JSON.stringify(data);
             await writeFile('./databases/database.json', data);
 
-            console.log('Tasks deleted!');
+            console.log('Task deleted!');
         }
     } catch (error) {
         console.log('Tasks not deleted!');

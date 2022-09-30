@@ -1,34 +1,22 @@
 const { readFile } = require('fs/promises');
 const inquirer = require( 'inquirer' );
-const { mostrarMenu } = require('./helpers/mensajes.js');
+const { taskOptions, loguinUser } = require('../helpers/menu');
 
 // Login
-const loginUser = async () => {
+const loginUser = async ( User ) => {
     try {
         let data = await readFile('./databases/database.json', 'utf8');
         data = JSON.parse(data);
 
-        const questions = [
-            {
-                type: 'input',
-                name: 'login',
-                message: '¿Cual es tu nombre?'
-              }
-        ]
-        
-        inquirer.prompt(questions).then((answers) => {
-          return answers;
-        });
-
-        const findUser = data.users.find( user => user.name == answers.login );
+        const findUser = data.users.find( user => user.name == User.name );
 
         if ( findUser !== undefined ) {
             console.log('User found!');
-            mostrarMenu( findUser );
+            taskOptions( findUser );
         }
     } catch (error) {
         console.log('User not found!');
-        loginUser();
+        loguinUser();
     }
 };
 
