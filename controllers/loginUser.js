@@ -1,5 +1,5 @@
 const { readFile } = require('fs/promises');
-const inquirer = require( 'inquirer' );
+require( 'colors' );
 const { taskOptions, loguinUser } = require('../helpers/menu');
 
 // Login
@@ -11,11 +11,11 @@ const loginUser = async ( User ) => {
         const findUser = data.users.find( user => user.name == User.name );
 
         if ( findUser !== undefined ) {
-            console.log('User found!');
+            console.log('User found!'.green);
             taskOptions( findUser );
         }
     } catch (error) {
-        console.log('User not found!');
+        console.log('User not found!'.red);
         loguinUser();
     }
 };

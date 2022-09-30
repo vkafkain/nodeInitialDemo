@@ -1,5 +1,5 @@
 const { writeFile, readFile } = require('fs/promises');
-const inquirer = require( 'inquirer' );
+require( 'colors' );
 
 // Create Task
 const createTask = async ( userLogin, answers ) => {
@@ -24,10 +24,10 @@ const createTask = async ( userLogin, answers ) => {
             data = JSON.stringify(data);
             await writeFile('./databases/database.json', data);
 
-            console.log('New Task created!');
+            console.log('New Task created!'.green);
         }
     } catch (error) {
-        console.log('User not found');
+        console.log('Task not created'.red);
     }
 };
 
