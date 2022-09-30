@@ -96,6 +96,27 @@ const playerRoll = async(req, res) => {
     }
 
 }
+const deleteGames = async(req, res) => {
+    const id = req.params.id
+    
+    try {
+        await Game.destroy( { where: { playerId: id }});
 
+        await Player.update({
+            games: 0,
+            gamesWin: 0,
+            winRate: 0
+        }, { where: {id: id }});
 
-module.exports = { getPlayers, createPlayer, updatePlayer, getPlayer, playerRoll };
+        const player = await Player.findAll( { where: { id: id}});
+
+        res.status(200).json({
+            player
+        });
+    } catch(error){
+        return res.status(500).json({ message: error.message })
+    }
+
+}
+
+module.exports = { getPlayers, createPlayer, updatePlayer, getPlayer, playerRoll, deleteGames };
