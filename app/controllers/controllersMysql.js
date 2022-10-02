@@ -1,7 +1,7 @@
 const Player = require('../models/Player-SQL');
 const Game = require('../models/game-SQL');
-const Sequelize = require('sequelize');
 const rollDices = require('../models/letsRoll');
+const sequelize = require('../database/db_sql');
 
 
 
@@ -80,7 +80,7 @@ const playerRoll = async(req, res) => {
 
     arr.push(player);
 
-    const { games, gamesWin} = arr[0][0].dataValues;
+    const { games, gamesWin} = arr[0][0].getDataValue
 
     const winRate = (gamesWin / games) * 100
     await Player.update({ winRate }, { where: { id: playerId }});

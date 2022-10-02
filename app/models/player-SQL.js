@@ -21,11 +21,14 @@ const Player = sequelize.define('Player', {
         defaultValue: 0
     },
     winRate: {
-        type: DataTypes.DECIMAL(7, 2),
+        type: DataTypes.DECIMAL(10, 2),
         defaultValue: 0
     }
 },
 {
+    timestamps: 'true',
+    createdAt: 'data',
+    updatedAt: false,
     tableName: 'players'
 });
 

@@ -14,15 +14,16 @@ const Game = db.define('Game', {
     dice2: {
       type: DataTypes.INTEGER
     },
-    result: {
+    rollScore: {
       type: DataTypes.INTEGER 
     },
-    succes: { 
+    veredict: { 
       type: DataTypes.BOOLEAN
     }
     
   }, 
   {
+    timestamps: false,
     tableName: 'games'
   });
   
