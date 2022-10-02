@@ -1,41 +1,90 @@
 # Entrega 3.3: Developers Team 🫕
+## Descripció del projecte 👁‍🗨
 
-Para utilizar database json executar:
-```
-npm run json
-```
+- Forma un equip amb 2 desenvolupadorxs més que estiguin en aquest mateix sprint (xl mentorx pot ajudar-te o suggerir-te companyxs). 
+- Haureu de construir el projecte TO-DO, que ha de satisfer els següents requisits:
 
-## Descripció 👁‍🗨
+    - Creeu una aplicació que permeti portar un llistat de tasques per fer. 
+    - Ha de contemplar les següents opcions:
 
-Branca Victor segona part
+        * Afegir tasques, 
+        * Llistar les tasques
+        * Mostrar la següent informació de cadascuna:
 
-Forma un equip amb 2 desenvolupadors més que estiguin en aquest mateix sprint (el mentor pot ajudar-te o suggerir-te companys). Haureu de construir el projecte TO-DO, que ha de satisfer els següents requisits:
+            - El seu estat: 'pendent', 'en execució' o 'acabada', 
+            - L'hora d'inici i de finalalització de la tasca, 
+            - L'usuarix que la va donar d'alta.
 
-- Creeu una aplicació que permeti portar un llistat de tasques per fer. Ha de contemplar l'opció d'afegir tasques, llistar-les i mostrar el seu estat (pendents, en execució o acabades) i l'hora d'inici i final de la tasca, així com l'usuari/ària que la va donar d'alta
+    - L'aplicatiu ha d'utilitzar-se per consola i ha de contenir les següents opcions: 
 
-- S'ha d'utilitzar per a la consola i ha de contenir les següents opcions: crear tasca, actualitzar tasca, esborrar tasca, llistar totes les tasques o llistar una tasca específica.
+        * Crear tasca, 
+        * Actualitzar tasca, 
+        * Esborrar tasca, 
+        * Llistar totes les tasques i 
+        * Llistar una tasca específica.
 
-- Heu d'utilitzar un repositori GitHub seguint la metodologia gitflow.
+    - S'ha d'utilitzar un repositori GitHub seguint la metodologia gitflow.
+        En el cas d'aquest projecte:
 
- Important ⚠️
+         https://github.com/vkafkain/nodeInitialDemo/issues
 
-- A partir d'ara, els lliuraments has de fer-los mitjançant pull-requests en el teu propi repositori. Efectua els següents passos:
 
-- Fes un fork del repositori nodeInitialDemo.
+## Nivell 1 ⭐
 
-- Clona el contingut al teu ordinador.
-Treballa en el teu codi a una branca nova.
-Quan acabis, fes una pull request a la teva branca main. -El mentor/a escriurà allà els comentaris necessaris per la correcció. 
+- Utilitzeu com a persistència un arxiu JSON.
+- El projecte haurà d'estar correctament configurat en GitHub en la seva estructura de carpetes i de branches (seguint la metodologia gitflow).
 
-Nivell 1 ⭐
+### Estructura global del Projecte Developers Teams:
 
-Utilitzeu com a persistència un arxiu JSON.
-El projecte haurà d'estar correctament configurat en GitHub en la seva estructura de carpetes i de branches (seguint la metodologia gitflow).
+/3.3-DevTeams_nodeInitialDemo
 
-Nivell 2 ⭐⭐
+    /controllers 
+    |-- controllers-json.js
+    |-- createTask.js
+    |-- createUser.js
+    |-- deleteTask.js
+    |-- loginUser.js
+    |-- mostrarOneTask.js
+    |-- updateTask.js
 
-Feu servir com a persistència MySQL.
+    /databases
+    |-- database.json
+    |-- db-json.js
 
-Nivell 3 ⭐⭐⭐
+    /helpers 
+    |-- inquirer-user.js
+    |-- mensajes.js
 
-Useu com a persistència MongoDB.
+    /models
+
+    |-- .env-template
+    |-- .gitignore
+    |-- app.js
+    |-- config.js
+    |-- package-lock.json
+    |-- package.json
+    |-- README.md
+
+### Instruccions per executar:
+- Instalar les dependències utilitzant al terminal la següent línia de comandaments: 
+
+        npm install
+
+- Per utilizar database.json cal executar la següent línia de comandament:
+
+        npm run json
+
+
+- Per iniciar:
+
+        node app.js
+
+## []Nivell 2 ⭐⭐
+
+- Feu servir com a persistència MySQL.
+
+## []Nivell 3 ⭐⭐⭐
+
+- Useu com a persistència MongoDB.
+
+**[] Nivells no realitzats.
