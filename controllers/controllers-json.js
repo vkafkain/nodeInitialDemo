@@ -31,7 +31,9 @@ const createUser = async ( User ) => {
 
         if (findUser == undefined) {
             const newUser = {
+
                 name: User.name,
+
                 tasks: [],
             };
 
@@ -78,6 +80,7 @@ const createTask = async ( userLogin, answers ) => {
     }
 };
 
+
 // Delete Task
 const deleteTask = async ( userLogin ) => {
     try {
@@ -117,3 +120,4 @@ const deleteTask = async ( userLogin ) => {
 
 
 module.exports = { loginUser, createUser, createTask, deleteTask }
+

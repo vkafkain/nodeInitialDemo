@@ -1,23 +1,21 @@
+require('colors');
 const { dbENV } = require('./config');
-const { connectDB } = require( dbENV );
-const { inquirerUser } = require( './helpers/inquirer-user' );
-const { mostrarMenu } = require('./helpers/mensajes.js');
+const { connectDB }  = require( dbENV );
+const { pausa, taskOptions, loguinUser } = require('./helpers/menu');
 
-console.clear()
 
-// main function
-const main = async () => {
-    try {
-        // Check if Database Exists
+
+const main = async () =>{ 
+    
+    try{
         await connectDB();
-        // Check if User Exists, if not, create a new one
-        await inquirerUser();
-        
-        //mostrarMenu();
-        
-    } catch (error) {
+        await loguinUser();
+
+
+    }catch(error){
         console.log(error);
     }
 };
-    
-main()
+
+main();
+
