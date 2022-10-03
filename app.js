@@ -10,6 +10,7 @@ const main = async () =>{
     try{
         await connectDB();
         await loguinUser();
+       
 
 
     }catch(error){

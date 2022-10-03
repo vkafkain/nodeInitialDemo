@@ -1,7 +1,7 @@
 const inquirer = require('inquirer');
 const { resolve } = require('path');
 const { controllersENV } = require('../config');
-const { createUser, loginUser, createTask, deleteTask, updateTask, mostrarTasks, mostrarOneTask } = require( controllersENV );
+const { createUser, loginUser, createTask, deleteTask, updateTask, mostrarTask, mostrarOneTask } = require( controllersENV );
 
 const loguin = [
     {
@@ -87,41 +87,58 @@ const loguinUser = async () => {
     const { log } = await inquirer.prompt(loguin)
     if (log === '1') {
         const name  = await inquirer.prompt(newUser);
-        createUser(name);
+        await createUser(name);
+        await pausa();
+        await taskOptions(name);
     } else {
         const name  = await inquirer.prompt(newUser);
-        loginUser(name);
+        await loginUser(name);
+        await pausa();
+        await taskOptions(name);
     }
 }
 
 const taskOptions = async( user ) => {
     console.clear();
     console.log('==========================='.green);
+    console.log(`  Hola ${user.name}`.green);
     console.log('  Seleccione una opción'.green);
     console.log('===========================\n'.green);
     
     const { option } = await inquirer.prompt(menuQuestion)
     
-    console.log(option);
+    //console.log(option);
     switch (option) {
         case '1': 
           const task = await inquirer.prompt(newTask);
-            createTask( user, task) 
+            await createTask( user, task);
+            await pausa();
+            await taskOptions(user); 
             break;
         case '2':
-            updateTask( user )
+
+            await updateTask( user );
+            await pausa();
+            await taskOptions(user);
             break; 
         case '3':
-            deleteTask( user )
+            await deleteTask( user );
+            await pausa();
+            await taskOptions(user);
             break;
         case '4':
-            mostrarTasks( user )
+            await mostrarTask( user );
+            await pausa();
+            await taskOptions(user);
             break;
         case '5':
-            mostrarOneTask( user )
+            await mostrarOneTask( user );
+            await pausa();
+            await taskOptions(user);
             break;
         case '0':
             process.exit;
+            await loguinUser();
     } 
 }
 
