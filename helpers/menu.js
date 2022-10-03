@@ -25,7 +25,7 @@ const newUser = [
         {
           type: 'input',
           name: 'name',
-          message: `Bienvenido a TO-DO List \nPor favor introduzca su nombre de usuario\n`,
+          message: `Por favor introduzca su nombre de usuario\n`,
         }
     ]
 
@@ -84,8 +84,17 @@ const newTask = [
 
 
 const loguinUser = async () => {
-    const { log } = await inquirer.prompt(loguin)
+    console.clear();
+    console.log('==========================='.green);
+    console.log('       Login Usuario       '.green);
+    console.log('===========================\n'.green);
+    const { log } = await inquirer.prompt(loguin);
+
+    console.log('\n==========================='.green);
+    console.log('  Bienvenido a TO-DO List'.green);
+    console.log('===========================\n'.green);
     const name  = await inquirer.prompt(newUser);
+
     if (log === '1') {
         const result1 = await createUser(name);
         if ( result1 == undefined ) {
