@@ -1,7 +1,7 @@
 const inquirer = require('inquirer');
 const { resolve } = require('path');
 const { controllersENV } = require('../config');
-const { createUser } = require( controllersENV );
+const { createUser, loginUser, createTask, deleteTask, updateTask, mostrarTasks, mostrarOneTask } = require( controllersENV );
 
 const loguin = [
     {
@@ -89,11 +89,12 @@ const loguinUser = async () => {
         const name  = await inquirer.prompt(newUser);
         createUser(name);
     } else {
-        console.log('TODO usuario registrado');//TODO buscar usuario ya registrado
+        const name  = await inquirer.prompt(newUser);
+        loginUser(name);
     }
 }
 
-const taskOptions = async() => {
+const taskOptions = async( user ) => {
     console.clear();
     console.log('==========================='.green);
     console.log('  Seleccione una opción'.green);
@@ -104,20 +105,20 @@ const taskOptions = async() => {
     console.log(option);
     switch (option) {
         case '1': 
-          const { name } = await inquirer.prompt(newTask);
-            console.log(name);//TODO controller crearTarea crearTarea(name); 
+          const task = await inquirer.prompt(newTask);
+            createTask( user, task) 
             break;
         case '2':
-            console.log('Actualizar tarea');  ; //TODO controller actualizar tarea await actualizarTasks()
+            updateTask( user )
             break; 
         case '3':
-            console.log('Borrar tarea'); //TODO controller borrar tarea;
+            deleteTask( user )
             break;
         case '4':
-            console.log('Ver todas las tareas');//TODO controller ver todas las tareas
+            mostrarTasks( user )
             break;
         case '5':
-            console.log('Ver una tarea'); //TODO constroller ver una tarea
+            mostrarOneTask( user )
             break;
         case '0':
             process.exit;
