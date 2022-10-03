@@ -85,17 +85,29 @@ const newTask = [
 
 const loguinUser = async () => {
     const { log } = await inquirer.prompt(loguin)
+    const name  = await inquirer.prompt(newUser);
     if (log === '1') {
-        const name  = await inquirer.prompt(newUser);
-        await createUser(name);
-        await pausa();
-        await taskOptions(name);
+        const result1 = await createUser(name);
+        if ( result1 == undefined ) {
+            await pausa();
+            await taskOptions(name);
+        } else {
+            await pausa();
+            console.clear();
+            await loguinUser();  
+        }
     } else {
-        const name  = await inquirer.prompt(newUser);
-        await loginUser(name);
-        await pausa();
-        await taskOptions(name);
-    }
+        const result2 = await loginUser(name)
+            if ( result2 == undefined ) {
+                console.log('User not found!'.red);
+                await pausa();
+                console.clear();
+                await loguinUser();
+            } else {
+            console.log('User found!'.green)}
+            await pausa();
+            await taskOptions(name);
+        }
 }
 
 const taskOptions = async( user ) => {

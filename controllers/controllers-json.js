@@ -11,12 +11,10 @@ const loginUser = async ( User ) => {
 
         const findUser = data.users.find( user => user.name == User.name );
 
-        if ( findUser !== undefined ) {
-            console.log('User found!'.green);
-            //taskOptions( findUser );
-        }
+        return findUser
+
     } catch (error) {
-        console.log('User not found!'.red);
+        console.log(error)
         //loguinUser();
     }
 };
@@ -41,11 +39,15 @@ const createUser = async ( User ) => {
             data = JSON.stringify(data);
             await writeFile('./databases/database.json', data);
 
-            console.log('New User created!');
+            console.log('New User created!'.green);
+            return findUser
             //taskOptions( newUser );
+        } else {
+            console.log('User already exists'.red);
+            return findUser
         }
     } catch (error) {
-        console.log('User already exists');
+        console.log(error);
         //loguinUser();
     }
 };
