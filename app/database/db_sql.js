@@ -8,6 +8,6 @@ sequelize.sync({ force: false })
     .then(() => {
         console.log("Tablas sincronizadas")
     });
-//TODO create table if not exist
+
 
 module.exports = sequelize;
