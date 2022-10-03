@@ -2,6 +2,7 @@ const Player = require('../models/Player-SQL');
 const Game = require('../models/game-SQL');
 const rollDices = require('../models/letsRoll');
 const sequelize = require('../database/db_sql');
+const { restart } = require('nodemon');
 
 
 
@@ -33,14 +34,14 @@ const getPlayer = async (req, res) => {
 
 const createPlayer = async (req, res) => {
     try {
-        const {name} = req.body
-        name ? true : name = 'ANONYMOUS';
+        const { name } = req.body;
+        name ? true : NAME = 'ANONYMOUS';
         const newPlayer = await Player.create({
             name,
         });
-        res.json(newPlayer);
+        res.json({ player: newPlayer });
     } catch (error) {
-    return res.status(500).json({ message: error.message })
+        return res.status(500).json({ message: error.message })
     }
 }
 
@@ -48,7 +49,6 @@ const updatePlayer = async (req, res) => {
     try {
         const { id } = req.params;
         const { name } = req.body;
-    
         const player = await Player.findByPk(id);
         player.name = name;
         await player.save();
@@ -67,7 +67,7 @@ const playerRoll = async(req, res) => {
     try {
         const roll = await Game.create({ dice1, dice2, rollScore, veredict, playerId })
     
-    let arr = [];
+    let arrayGames = [];
 
     if(veredict === 'win') {
         Player.increment(['games', 'gamesWin'], {where: { id: playerId } });
@@ -78,16 +78,16 @@ const playerRoll = async(req, res) => {
 
     const player = await Player.findAll( { attributes: [ 'games', 'gamesWin'], where: { id: playerId }} );
 
-    arr.push(player);
+    arrayGames.push(player);
 
-    const { games, gamesWin} = arr[0][0].getDataValue
-
-    const winRate = (gamesWin / games) * 100
-    await Player.update({ winRate }, { where: { id: playerId }});
+    const { games, gamesWin} = arrayGames[0][0].dataValues;
+    const winRate = (gamesWin / games) * 100;
+    
+    await Player.update( { winRate }, { where: { id: playerId } });
 
     const playerRolled = await Player.findAll({ attributes: ['name'], where: { id: playerId}});
 
-    res.status(200).json({
+    res.status(200).json( {
         playerRolled,
         roll
     });
@@ -100,13 +100,13 @@ const deleteGames = async(req, res) => {
     const id = req.params.id
     
     try {
-        await Game.destroy( { where: { playerId: id }});
+        await Game.destroy( { where: { id: id }});
 
         await Player.update({
             games: 0,
             gamesWin: 0,
             winRate: 0
-        }, { where: {id: id }});
+        }, { where: { id: id }});
 
         const player = await Player.findAll( { where: { id: id}});
 
@@ -116,7 +116,21 @@ const deleteGames = async(req, res) => {
     } catch(error){
         return res.status(500).json({ message: error.message })
     }
-
+    id
 }
 
-module.exports = { getPlayers, createPlayer, updatePlayer, getPlayer, playerRoll, deleteGames };
+const getGames = async (req, res) => {
+    const id = req.params.id
+    try{
+      const player = await Player.findAll(
+        {
+        attributes:['id','name'],
+        where:{id:id},includes:[Game],
+      })
+      res.status(200).json(player)
+    } catch (error) {
+      res.status(404).json({message:'player not found'})
+    }
+}
+
+module.exports = { getPlayers, createPlayer, updatePlayer, getPlayer, playerRoll, deleteGames, getGames };

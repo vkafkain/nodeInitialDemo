@@ -9,3 +9,6 @@ app.use(express.json());
 app.use(playerRoutes);
 
 module.exports = app;
+
+//TODO poner codigo correctos en los errores
+//TODO codigo correctos res

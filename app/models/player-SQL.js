@@ -37,8 +37,4 @@ Player.hasMany(Game, {onDelete:'cascade'});
 Game.belongsTo(Player);
 
 
-
-
-
-
 module.exports = Player;
