@@ -26,6 +26,10 @@ const newUser = [
           type: 'input',
           name: 'name',
           message: `Por favor introduzca su nombre de usuario\n`,
+          validate(value){
+            const valid = value !== '' && value.length > 5;
+            return valid || 'Please enter a valid name at least 6 characters';
+          }
         }
     ]
 
