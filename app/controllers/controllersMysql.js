@@ -122,15 +122,29 @@ const deleteGames = async(req, res) => {
 const getGames = async (req, res) => {
     const id = req.params.id
     try{
-      const player = await Player.findOne(
-        {
-        attributes:['id','name'],
-        where:{id:id},includes:[Game],
-      })
-      res.status(200).json(player)
-    } catch (error) {
-      res.status(404).json({message:'Player not found, when trying to show the games'})
+        const player = await Player.findOne({ where: { id: id } });
+        if(!player) return
+        let games = await Game.findAll({ where: { id: player.id}})
+        
+        res.status(200).json(games);
+
+    } catch(error){
+        return res.status(404).json({ message: 'Error getting games' });
     }
+
 }
 
-module.exports = { getPlayers, createPlayer, updatePlayer, getPlayer, playerRoll, deleteGames, getGames };
+const getRanking = async (req, res) => {
+
+    try {
+    const ranking = await Player.findAll({ where: { winRate, },
+        order: ['winRate DESC']});
+        
+        res.status(200).json(ranking);
+    } catch (error) {
+        return res.status(404).json({ message: 'Error getting ranking' });
+    }
+};
+
+
+module.exports = { getPlayers, createPlayer, updatePlayer, getPlayer, playerRoll, deleteGames, getGames, getRanking };
