@@ -20,5 +20,8 @@ router.delete('/games/:id', deleteGames)
 // GET /games/{id}: retorna el llistat de jugades per un jugador/a.
 router.get('/games/:id', getGames)
 
+// GET /ranking: retorna un ranking de jugadors/es ordenat per percentatge d'èxits i el percentatge d’èxits mig del conjunt de tots els jugadors/es.
+router.get('/ranking', )
+
 
 module.exports = router;
