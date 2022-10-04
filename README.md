@@ -24,10 +24,6 @@
         * Llistar una tasca específica.
 
     - S'ha d'utilitzar un repositori GitHub seguint la metodologia gitflow.
-        En el cas d'aquest projecte:
-
-         https://github.com/vkafkain/nodeInitialDemo/issues
-
 
 ## Nivell 1 ⭐
 
@@ -40,22 +36,10 @@
 
     /controllers 
     |-- controllers-json.js
-    |-- createTask.js
-    |-- createUser.js
-    |-- deleteTask.js
-    |-- loginUser.js
-    |-- mostrarOneTask.js
-    |-- updateTask.js
 
     /databases
     |-- database.json
     |-- db-json.js
-
-    /helpers 
-    |-- inquirer-user.js
-    |-- menu.js
-
-    /models
 
     |-- .env-template
     |-- .gitignore
@@ -66,7 +50,7 @@
     |-- README.md
 
 ### Instruccions per executar:
-- Instalar les dependències utilitzant al terminal la següent línia de comandaments: 
+- Instal·lar les dependències utilitzant al terminal la següent línia de comandaments: 
 
         npm install
 
