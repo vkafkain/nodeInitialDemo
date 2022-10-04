@@ -122,7 +122,7 @@ const deleteGames = async(req, res) => {
 const getGames = async (req, res) => {
     const id = req.params.id
     try{
-      const player = await Player.findAll(
+      const player = await Player.findOne(
         {
         attributes:['id','name'],
         where:{id:id},includes:[Game],
