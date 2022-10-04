@@ -8,10 +8,10 @@ const { restart } = require('nodemon');
 
 const getPlayers = async (req, res) => {
     try{
-        const players = await Player.findAll()
-        res.json(players);
+        const players = await Player.findAll();
+        res.status(200).json(players);
     }catch(error) {
-        return res.status(500).json({ message: error.message })
+        return res.status(404).json({ message: 'Error getting players' });
     }
 }
 
@@ -25,9 +25,9 @@ const getPlayer = async (req, res) => {
         });
         if(!player) return res.status(404).json( {message: "Player does not exist in db" } )
 
-        res.json(player);
+        res.status(200).json(player);
     } catch (error) {
-        return res.status(500).json({ message: error.message })
+        return res.status(404).json({ message: 'Error getting player' });
     }
 
 }
@@ -39,9 +39,9 @@ const createPlayer = async (req, res) => {
         const newPlayer = await Player.create({
             name,
         });
-        res.json({ player: newPlayer });
+        res.status(201).json({ player: newPlayer });
     } catch (error) {
-        return res.status(500).json({ message: error.message })
+        return res.status(400).json({ message: 'Unable to create player' })
     }
 }
 
@@ -53,10 +53,10 @@ const updatePlayer = async (req, res) => {
         player.name = name;
         await player.save();
     
-        res.json(player)
+        res.status(200).json(player);
         
     } catch (error) {
-        return res.status(500).json({ message: error.message })
+        return res.status(400).json({ message: 'Could not update player' })
     }
 }
 
@@ -92,7 +92,7 @@ const playerRoll = async(req, res) => {
         roll
     });
     } catch (error){
-        return res.status(500).json({ message: error.message })
+        return res.status(400).json({ message: 'Dice roll error' })
     }
 
 }
@@ -114,7 +114,7 @@ const deleteGames = async(req, res) => {
             player
         });
     } catch(error){
-        return res.status(500).json({ message: error.message })
+        return res.status(400).json({ message: 'Could not remove player'})
     }
     id
 }
@@ -129,7 +129,7 @@ const getGames = async (req, res) => {
       })
       res.status(200).json(player)
     } catch (error) {
-      res.status(404).json({message:'player not found'})
+      res.status(404).json({message:'Player not found, when trying to show the games'})
     }
 }
 
