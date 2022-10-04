@@ -53,7 +53,7 @@
 
     /helpers 
     |-- inquirer-user.js
-    |-- mensajes.js
+    |-- menu.js
 
     /models
 
@@ -75,9 +75,6 @@
         npm run json
 
 
-- Per iniciar:
-
-        node app.js
 
 ## []Nivell 2 ⭐⭐
 
