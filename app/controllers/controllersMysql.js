@@ -146,5 +146,9 @@ const getRanking = async (req, res) => {
     }
 };
 
+const getLosers = async (req, res) => {
+    
+}
+
 
 module.exports = { getPlayers, createPlayer, updatePlayer, getPlayer, playerRoll, deleteGames, getGames, getRanking };
