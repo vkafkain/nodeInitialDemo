@@ -1,13 +1,11 @@
 const { Sequelize } = require('sequelize');
 
-const sequelize = new Sequelize('dados', 'root', '', {
+const db = new Sequelize('dados', 'root', '1234', {
     host: 'localhost',
     dialect: 'mysql'
 });
-sequelize.sync({ force: false })
-    .then(() => {
-        console.log("Tablas sincronizadas")
-    });
 
 
-module.exports = sequelize;
+
+
+module.exports = db;

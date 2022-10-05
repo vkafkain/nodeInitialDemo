@@ -1,10 +1,8 @@
-const Player = require('../models/Player-SQL');
-const Game = require('../models/game-SQL');
+// const Game = require('../models/game-SQL');
+const { Player, Game } = require('../models/model-SQL');
 const rollDices = require('../models/letsRoll');
+const {Sequelize} = require('sequelize');
 const sequelize = require('../database/db_sql');
-const { restart } = require('nodemon');
-
-
 
 const getPlayers = async (req, res) => {
     try{
@@ -61,16 +59,16 @@ const updatePlayer = async (req, res) => {
 }
 
 const playerRoll = async(req, res) => {
-    const playerId = req.params.id
-    const { dice1, dice2, rollScore, veredict } = rollDices();
-
+    
     try {
+        const playerId = req.params.id
+        const { dice1, dice2, rollScore, veredict } = rollDices();
         const roll = await Game.create({ dice1, dice2, rollScore, veredict, playerId })
     
     let arrayGames = [];
 
     if(veredict === 'win') {
-        Player.increment(['games', 'gamesWin'], {where: { id: playerId } });
+        Player.increment(['games', 'gamesWin'], {where: { id:playerId } });
     }
     if(veredict === 'lose') {
         Player.increment(['games'],{ where: { id: playerId} });
@@ -92,10 +90,10 @@ const playerRoll = async(req, res) => {
         roll
     });
     } catch (error){
-        return res.status(400).json({ message: 'Dice roll error' })
+        return res.status(400).json({ error })
     }
-
 }
+
 const deleteGames = async(req, res) => {
     const id = req.params.id
     
@@ -120,34 +118,31 @@ const deleteGames = async(req, res) => {
 }
 
 const getGames = async (req, res) => {
-    const id = req.params.id
     try{
-        const player = await Player.findOne({ where: { id: id } });
-        if(!player) return
-        let games = await Game.findAll({ where: { id: player.id}})
+        const idPlayer = req.params.id;
+        const player = await Player.findAll({ attributes:['id', 'name'], where: { id: idPlayer }, include:[Game] });
         
-        res.status(200).json(games);
+        res.status(200).json(player);
 
     } catch(error){
         return res.status(404).json({ message: 'Error getting games' });
     }
-
 }
 
 const getRanking = async (req, res) => {
 
     try {
-    const ranking = await Player.findAll({ where: { winRate, },
-        order: ['winRate DESC']});
-        
+    let ranking = await Player.findAll({
+        attributes: ['id', 'name', 'games', 'gamesWin', 'winRate'],
+        order: [['winRate', 'DESC'], ['games', 'DESC']]});
+
         res.status(200).json(ranking);
     } catch (error) {
         return res.status(404).json({ message: 'Error getting ranking' });
     }
 };
 
-const getLosers = async (req, res) => {
-    
+const getLosers = async (req, res) => {  
 }
 
 

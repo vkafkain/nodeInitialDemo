@@ -24,7 +24,7 @@ router.get('/games/:id', getGames);
 router.get('/ranking', getRanking);
 
 // GET /ranking/loser: retorna el jugador/a amb pitjor percentatge d’èxit.
-router.get('/ranking/loser', getLosers);
+// router.get('/ranking/loser', getLosers);
 
 
 module.exports = router;
