@@ -1,9 +1,9 @@
 const app = require('./app')
-const db = require('./database/db_sql');
+const db = require('./database/dbSQL');
 
 async function main() {
   try{  
-    await db.sync({force: false})
+    await db.sync({force: true})
     app.listen(3000);
     console.log("Server is listening on port", 3000);
 } catch(error) {
