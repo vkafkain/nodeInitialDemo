@@ -1,5 +1,5 @@
 const { DataTypes } = require('sequelize');
-const db = require('../database/dbSQL');
+const {db} = require('../database/dbSQL');
 
 const Game = db.define('Game', {
     dice1: {
