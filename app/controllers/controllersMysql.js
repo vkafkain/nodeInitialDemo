@@ -119,13 +119,11 @@ const deleteGames = async(req, res) => {
 
 const getGames = async (req, res) => {
     const idPlayer = req.params.id;
-    console.log(idPlayer);
-    
+        
     try{
         const games = await Game.findAll({
-            where: { PlayerId: idPlayer }
+            PlayerId: idPlayer 
         });
-        console.log(games);
 
         res.status(200).json(games);
 
