@@ -121,13 +121,8 @@ const getGames = async (req, res) => {
     const idPlayer = req.params.id;
 
     try{
-    
-        const player = await Player.findByPk({
-            where: { idPlayer },
-        });
-
         const games = await Game.findAll({
-            where: { idPlayer }
+            where: { playerId: idPlayer }
         });
 
         res.status(200).json(games);
