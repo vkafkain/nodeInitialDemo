@@ -26,7 +26,7 @@ const Player = db.define('Player', {
       }
     },
     {
-      timestamps: 'true',
+      timestamps: false,
       createdAt: 'data',
       updatedAt: false,
       tableName: 'players'

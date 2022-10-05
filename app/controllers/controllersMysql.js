@@ -118,14 +118,22 @@ const deleteGames = async(req, res) => {
 }
 
 const getGames = async (req, res) => {
+    const idPlayer = req.params.id;
+
     try{
-        const idPlayer = req.params.id;
-        const player = await Player.findAll({ attributes:['id', 'name'], where: { id: idPlayer }, include:[Game] });
-        
-        res.status(200).json(player);
+    
+        const player = await Player.findByPk({
+            where: { idPlayer },
+        });
+
+        const games = await Game.findAll({
+            where: { player }
+        });
+
+        res.status(200).json(games);
 
     } catch(error){
-        return res.status(404).json({ message: 'Error getting games' });
+        return res.status(404).json({ message: error });
     }
 }
 
