@@ -127,7 +127,7 @@ const getGames = async (req, res) => {
         });
 
         const games = await Game.findAll({
-            where: { player }
+            where: { idPlayer }
         });
 
         res.status(200).json(games);
@@ -173,6 +173,5 @@ const getWinner = async (req, res) => {
         return res.status(404).json({ message: 'Error getting winner' });
     }
 }
-
 
 module.exports = { getPlayers, createPlayer, updatePlayer, getPlayer, playerRoll, deleteGames, getGames, getRanking, getLoser, getWinner };

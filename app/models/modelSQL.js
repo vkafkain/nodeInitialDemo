@@ -1,7 +1,6 @@
 const { DataTypes } = require('sequelize');
 const db = require('../database/db_sql');
 
-
 const Player = db.define('Player', {
   id: {
     type: DataTypes.INTEGER,
@@ -60,5 +59,4 @@ const Game = db.define('Game', {
 Player.hasMany(Game);
 Game.belongsTo(Player);
 
-     
 module.exports = {Player, Game};
