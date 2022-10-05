@@ -2,7 +2,7 @@
 const { Player, Game } = require('../models/modelSQL');
 const rollDices = require('../models/letsRoll');
 const {Sequelize} = require('sequelize');
-const sequelize = require('../database/db_sql');
+const sequelize = require('../database/dbSQL');
 
 const getPlayers = async (req, res) => {
     try{
@@ -59,38 +59,37 @@ const updatePlayer = async (req, res) => {
 }
 
 const playerRoll = async(req, res) => {
+    const PlayerId = req.params.id;
+    const { dice1, dice2, rollScore, veredict } = rollDices();
     
     try {
-        const playerId = req.params.id
-        const { dice1, dice2, rollScore, veredict } = rollDices();
-        const roll = await Game.create({ dice1, dice2, rollScore, veredict, playerId })
+        const roll = await Game.create({ dice1, dice2, rollScore, veredict, PlayerId });
     
     let arrayGames = [];
 
     if(veredict === 'win') {
-        Player.increment(['games', 'gamesWin'], {where: { id:playerId } });
+        Player.increment(['games', 'gamesWin'], {where: { id:PlayerId } });
     }
     if(veredict === 'lose') {
-        Player.increment(['games'],{ where: { id: playerId} });
+        Player.increment(['games'],{ where: { id: PlayerId} });
     }
 
-    const player = await Player.findAll( { attributes: [ 'games', 'gamesWin'], where: { id: playerId }} );
+    const player = await Player.findAll( { attributes: [ 'games', 'gamesWin'], where: { id: PlayerId }} );
 
     arrayGames.push(player);
 
     const { games, gamesWin} = arrayGames[0][0].dataValues;
     const winRate = (gamesWin / games) * 100;
-    
-    await Player.update( { winRate }, { where: { id: playerId } });
+    await Player.update( { winRate }, { where: { id: PlayerId } });
 
-    const playerRolled = await Player.findAll({ attributes: ['name'], where: { id: playerId}});
+    const playerRolled = await Player.findAll({ attributes: ['name'], where: { id: PlayerId}});
 
     res.status(200).json( {
         playerRolled,
         roll
     });
     } catch (error){
-        return res.status(400).json({ error })
+        return res.status(400).json({  message: 'Game Error' })
     }
 }
 
@@ -118,15 +117,14 @@ const deleteGames = async(req, res) => {
 }
 
 const getGames = async (req, res) => {
+    
     const idPlayer = req.params.id;
-        
     try{
-        const games = await Game.findAll({
-            PlayerId: idPlayer 
-        });
-
-        res.status(200).json(games);
-
+        const games = await Game.findAll({ 
+            where:{ playerId: idPlayer } 
+            }
+        );
+        res.send({ games });
     } catch(error){
         return res.status(404).json({ message: error });
     }
@@ -135,11 +133,15 @@ const getGames = async (req, res) => {
 const getRanking = async (req, res) => {
 
     try {
-    let ranking = await Player.findAll({
+    const ranking = await Player.findAll({
         attributes: ['id', 'name', 'games', 'gamesWin', 'winRate'],
         order: [['winRate', 'DESC'], ['games', 'DESC']]});
+    
+    const players = await Player.count();
+    const avgWinRate = await Player.sum('winRate')
+    const winRate = avgWinRate/players
 
-        res.status(200).json(ranking);
+        res.status(200).json({ranking, winRate});
     } catch (error) {
         return res.status(404).json({ message: 'Error getting ranking' });
     }
