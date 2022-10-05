@@ -1,5 +1,5 @@
 // const Game = require('../models/game-SQL');
-const { Player, Game } = require('../models/model-SQL');
+const { Player, Game } = require('../models/modelSQL');
 const rollDices = require('../models/letsRoll');
 const {Sequelize} = require('sequelize');
 const sequelize = require('../database/db_sql');
@@ -142,8 +142,29 @@ const getRanking = async (req, res) => {
     }
 };
 
-const getLosers = async (req, res) => {  
+const getLoser = async (req, res) => {  
+    try{
+        let loser = await Player.findOne({
+            attributes: ['id', 'name', 'games', 'gamesWin', 'winRate'],
+            order:[['winRate', 'ASC']]
+        });
+        res.status(200).json(loser);
+    }catch(error){
+        return res.status(404).json({ message: 'Error getting looser' });
+    }
+}
+
+const getWinner = async (req, res) => {
+    try{
+        let winner = await Player.findOne({
+            attributes: ['id', 'name', 'games', 'gamesWin', 'winRate'],
+            order:[['winRate', 'DESC']]
+        });
+        res.status(200).json(winner);
+    }catch(error){
+        return res.status(404).json({ message: 'Error getting winner' });
+    }
 }
 
 
-module.exports = { getPlayers, createPlayer, updatePlayer, getPlayer, playerRoll, deleteGames, getGames, getRanking };
+module.exports = { getPlayers, createPlayer, updatePlayer, getPlayer, playerRoll, deleteGames, getGames, getRanking, getLoser, getWinner };

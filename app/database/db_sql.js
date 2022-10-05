@@ -5,7 +5,4 @@ const db = new Sequelize('dados', 'root', '1234', {
     dialect: 'mysql'
 });
 
-
-
-
 module.exports = db;

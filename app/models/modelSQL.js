@@ -48,7 +48,7 @@ const Game = db.define('Game', {
           type: DataTypes.INTEGER 
         },
         veredict: { 
-          type: DataTypes.BOOLEAN
+          type: DataTypes.CHAR
         }
         
       }, 
@@ -56,8 +56,9 @@ const Game = db.define('Game', {
         timestamps: false,
         tableName: 'games'
       });
-/* 
-Player.hasMany(Game, { onDelete: 'cascade'});
+
+Player.hasMany(Game);
 Game.belongsTo(Player);
-     */
+
+     
 module.exports = {Player, Game};
