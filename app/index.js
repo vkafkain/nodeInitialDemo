@@ -3,7 +3,7 @@ const db = require('./database/db_sql');
 
 async function main() {
   try{  
-    await db.sync({force: true})
+    await db.sync({force: false})
     app.listen(3000);
     console.log("Server is listening on port", 3000);
 } catch(error) {
