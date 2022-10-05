@@ -1,10 +1,30 @@
 const { DataTypes } = require('sequelize');
-const db = require('../database/db_sql');
+const db = require('../database/dbSQL');
+
+const Game = db.define('Game', {
+    dice1: {
+      type: DataTypes.INTEGER
+    },
+    dice2: {
+      type: DataTypes.INTEGER
+    },
+    rollScore: {
+      type: DataTypes.INTEGER 
+    },
+    veredict: { 
+      type: DataTypes.STRING
+    }
+    
+  }, 
+  {
+    timestamps: false,
+    tableName: 'games'
+  });
 
 const Player = db.define('Player', {
-  id: {
-    type: DataTypes.INTEGER,
-    autoIncrement: true,
+      id: {
+        type: DataTypes.INTEGER,
+        autoIncrement: true,
         primaryKey: true
       },
       name : {
@@ -12,7 +32,7 @@ const Player = db.define('Player', {
         unique: true,
       },
       games: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING,
         defaultValue: 0
       },
       gamesWin: {
@@ -30,33 +50,17 @@ const Player = db.define('Player', {
       updatedAt: false,
       tableName: 'players'
     });
-    
-const Game = db.define('Game', {
-        id:{
-          type: DataTypes.INTEGER,
-          autoIncrement: true,
-          primaryKey: true
-        },
-        dice1: {
-          type: DataTypes.INTEGER
-        },
-        dice2: {
-          type: DataTypes.INTEGER
-        },
-        rollScore: {
-          type: DataTypes.INTEGER 
-        },
-        veredict: { 
-          type: DataTypes.CHAR
-        }
-        
-      }, 
-      {
-        timestamps: false,
-        tableName: 'games'
-      });
 
-Player.hasMany(Game);
+Player.hasMany(Game, {onDelete:'cascade'});
 Game.belongsTo(Player);
+
+Player.sync()
+.then()
+.catch(err => console.log(err));
+
+Game.sync()
+.then()
+.catch(err => console.log(err))
+
 
 module.exports = {Player, Game};
