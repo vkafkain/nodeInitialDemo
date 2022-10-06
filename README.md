@@ -2,7 +2,7 @@
 
 ## Què necessitem per fer-lo funcionar? 🧞
 
-Necessitem instal·lar els mòduls express, multer, cors, cross-fetch de Nodejs amb la següent línia de codi per la terminal.
+Necessitem instal·lar els mòduls necessaris. Hem de introduïr els següent comandament per términal.
 
     npm i 
 
