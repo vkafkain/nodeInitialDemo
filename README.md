@@ -10,7 +10,7 @@ Necessitem instal·lar els mòduls necessaris. Hem de introduïr els següent co
 
 Un cop hem instal·lat els diferents paquets hem d'iniciar el servidor amb la següent línia de codi.
 
-    node app/app.js
+    node app/index.js
 
 ## POSTMAN 📬
 
