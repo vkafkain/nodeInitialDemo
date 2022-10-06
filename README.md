@@ -1,53 +1,26 @@
+# Entrega 4.2: Node REST Server 🔥
 
-# Node Initial Project
+## Què necessitem per fer-lo funcionar? 🧞
 
-Branca dados
+Necessitem instal·lar els mòduls express, multer, cors, cross-fetch de Nodejs amb la següent línia de codi per la terminal.
 
-### Project Structure
+    npm i 
 
-Main structure of node.js project. Folders / files:
+## Instruccions d'ús: 🧙‍♂️
 
-- <b>\_\_tests__</b>. Tests folder. See [Jest Docs](https://jestjs.io/es-ES/docs/configuration) and [Chai Docs](https://www.chaijs.com/)
-- <b>app</b>:
-    - <b>config</b>
-    - <b>controllers</b>
-    - <b>middlewares</b>
-    - <b>models</b>
-    - <b>routes</b>
-    - <b>helpers</b>
-    - <b>app.js</b>. Entry point.
-- <b>package.json</b>.
-- <b>.env</b>. Environment descriptor. See [dotenv doc](https://www.npmjs.com/package/dotenv).
+Un cop hem instal·lat els diferents paquets hem d'iniciar el servidor amb la següent línia de codi.
 
-Extras:
-- <b>.eslintrc</b>. Linter JS, static code analyzer. See [EsLint Docs](https://eslint.org/docs/user-guide/configuring/configuration-files).
-- <b>.prettierignore</b>. Code formatter. See [Prettier Config](https://prettier.io/docs/en/configuration.html) and [Prettier Ignore](https://prettier.io/docs/en/ignore.html).
-- <b>.ecosystem.config.js</b>. Process Manage at runtime. See [PM2 Docs](https://pm2.keymetrics.io/).
+    node app/app.js
 
-### Import project for use with Visual Studio Code
+## POSTMAN 📬
 
-Follow the steps below:
-* Clone the project from the Github Platform. Execute:
-  ```
-  git clone [url project]
-  ```
-* Open the project downloaded.
-  ![Open Project](img/VSC_open.png)
+Per executar d'una manera ràpida i fàcil totes les diferents indicacions dels exercicis farem servir Postman un programa que ens permet fer diferents peticions al servidor. Es pot fer servir des del navegador o també el podem instal·lar com a programa.
+El podem descarregar del següent enllaç:
+
+[Enllaç Postman](https://www.postman.com/downloads/)
 
 
-### Import project for use with WebStorm
+Un cop tinguem el programa postman obert hem de clicar en import, anem a la carpeta nodeInitialDemo i importem l'arxiu que es diu Postman.json.
 
-Follow the steps below:
-* Clone the project from the Github Platform. Execute:
-  ```
-  git clone [url project]
-  ```
-* Open the project downloaded.
-![Open Project](img/webstorm_open.png)
+Finalment, amb la col·lecció ja importada a postman fem clic en Run, això executarà la col·lecció.
 
-
-### Utilities
-
-* [Node Developers Guide](https://nodejs.dev/learn)
-* **.gitignore file** configuration. See [Official Docs](https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files).
-* **Git branches**. See [Official Docs](https://git-scm.com/book/en/v2/Git-Branching-Branches-in-a-Nutshell)
