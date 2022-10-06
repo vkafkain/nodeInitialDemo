@@ -1,6 +1,6 @@
 // const Game = require('../models/game-SQL');
 const { Player, Game } = require('../models/modelSQL');
-const rollDices = require('../models/letsRoll');
+const rollDices = require('../services/letsRoll');
 const {Sequelize} = require('sequelize');
 const sequelize = require('../database/dbSQL');
 
