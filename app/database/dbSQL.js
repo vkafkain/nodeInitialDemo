@@ -17,5 +17,6 @@ async function connecSQLDB() {
     })
     connection.end();
 }
+
   
 module.exports = {db, connecSQLDB};
