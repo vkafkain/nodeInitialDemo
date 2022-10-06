@@ -33,5 +33,6 @@ router.get('/ranking/winner', getWinner);
 //TODO dar nombre anonimo a los anonimos
 //TODO crear errore postman
 //TODO revisar tabulacion etc
+//TODO separar routes en tipo 
 
 module.exports = router;
