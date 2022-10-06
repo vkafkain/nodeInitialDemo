@@ -7,5 +7,6 @@ const rankingRouter = require("./ranking");
 router.use("/players", playerRouter);
 router.use("/games", gamesRouter);
 router.use("/ranking", rankingRouter);
+// router.use("/login", loginRouter);
 
 module.exports = router;
