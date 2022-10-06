@@ -31,6 +31,7 @@ router.get('/ranking/winner', getWinner);
 
 
 //TODO dar nombre anonimo a los anonimos
-//TODO create data base if not exist
+//TODO crear errore postman
+//TODO revisar tabulacion etc
 
 module.exports = router;
