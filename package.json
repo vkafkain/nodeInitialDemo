@@ -4,7 +4,7 @@
   "description": "sample project for node",
   "main": "app.js",
   "scripts": {
-    "start": "node app/app.js",
+    "start": "node app/index.js",
     "dev": "nodemon app/index.js",
     "test": "jest"
   },
