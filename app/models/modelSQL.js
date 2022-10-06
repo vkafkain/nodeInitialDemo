@@ -54,13 +54,4 @@ const Player = db.define('Player', {
 Player.hasMany(Game, {onDelete:'cascade'});
 Game.belongsTo(Player);
 
-Player.sync()
-.then()
-.catch(err => console.log(err));
-
-Game.sync()
-.then()
-.catch(err => console.log(err))
-
-
 module.exports = {Player, Game};
