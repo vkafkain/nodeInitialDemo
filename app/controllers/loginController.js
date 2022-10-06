@@ -1,9 +1,4 @@
 const { Player } = require("../models/Player");
+const bcrypt = require('bcrypt');
 
-//Login
-const signIn = (req, res) => {};
 
-//Register
-const signUp = (req, res) => {};
-
-module.exports = { signIn, signUp };
