@@ -1,4 +1,5 @@
-const { Player, Game } = require("../models/modelSQL");
+const { Player } = require("../models/Player");
+const { Game } = require("../models/Game");
 const rollDices = require("../services/letsRoll");
 
 const getPlayers = async (req, res) => {
