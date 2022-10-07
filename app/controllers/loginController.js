@@ -1,34 +1,18 @@
-const { Player } = require("../models/Player");
-const bcrypt = require("bcrypt");
-const jwt = require("jsonwebtoken");
 const loginConfig = require("../config/login");
+const { createJWT } = require("../services/createJWT");
 
-const createAdmin = (req, res) => {
-  let name = req.body.name;
-  if (name !== "admin") {
-    res.status(401).json({ msg: "Unauthorized name" });
-  }
-  let password = bcrypt.hashSync(
-    req.body.password,
-    Number.parseInt(loginConfig.rounds)
-  );
+const showToken = (req, res) => {
+  const { name, password } = req.body;
 
-  Player.create({
-    name: name,
-    password: password,
-  })
-    .then((user) => {
-      let token = jwt.sign({ user: user }, loginConfig.secret, {
-        expiresIn: loginConfig.expires,
-      });
-      res.json({
-        user: user,
-        token: token,
-      });
+  if (name !== "admin" && password !== loginConfig.secret) {
+    res.status(401).json({ msg: "wrong credentials" });
+} else {
+    const uniqueToken = createJWT(name);
+    res.header('authorization', uniqueToken).json({
+        msg: "Authorization as administrator has been successful",
+        token : uniqueToken
     })
-    .catch((err) => {
-      res.status(400).json(err);
-    });
+}
 };
 
-module.exports = { createAdmin };
+module.exports = { showToken };
