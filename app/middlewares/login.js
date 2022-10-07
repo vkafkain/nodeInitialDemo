@@ -19,6 +19,3 @@ const auth = (req, res, next) => {
 };
 
 module.exports = auth;
-
-//TODO JWT autentificador
-//TODO dar nombre anonimo a los anonimos
