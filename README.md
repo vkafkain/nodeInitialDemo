@@ -52,4 +52,4 @@ GET /games/{id}: retorna el llistat de jugades per un jugador/a.
 
 ## loguin
 
-
+Afegeix un endpoint /login que permeti accedir a un administrador amb usuari/ària i contrasenya i retorni un token i fes obligatòria l'autentificació per JWT en tots els accessos als URL del microservei, fent servir middlewares per validar al token.
