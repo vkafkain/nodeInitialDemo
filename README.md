@@ -1,5 +1,12 @@
 # Entrega 4.2: Node REST Server 🔥
 
+## Tecnologies utilitzades
+
+Hem fet servir els següents moduls de npm:
+
+    - 
+
+
 ## Què necessitem per fer-lo funcionar? 🧞
 
 Necessitem instal·lar els mòduls necessaris. Hem de introduïr els següent comandament per términal.
@@ -23,7 +30,11 @@ Un cop tinguem el programa postman obert hem de clicar en import, anem a la carp
 
 Finalment, amb la col·lecció ja importada a postman fem clic en Run, això executarà la col·lecció.
 
-## RUTES 🌌´
+### IMPORTANT 
+
+La primera request que hem d'enviar del postman és "admin genera JWT", aquesta ens retornarà un token i l'haurem d'introduir a les següents request, concretament a Authorization seleccionem Bearer Token e introduïm el token.
+
+## RUTES 🌌
 
 ### jugadors
 
