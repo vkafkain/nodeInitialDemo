@@ -28,7 +28,6 @@ Finalment, amb la col·lecció ja importada a postman fem clic en Run, això exe
 ### jugadors
 
 GET /players: retorna el llistat de tots els jugadors/es del sistema amb el seu percentatge d’èxits.
-router.get("/", getPlayers);
 
 POST /players: crea un jugador/a.
 
@@ -52,4 +51,4 @@ GET /games/{id}: retorna el llistat de jugades per un jugador/a.
 
 ## loguin
 
-Afegeix un endpoint /login que permeti accedir a un administrador amb usuari/ària i contrasenya i retorni un token i fes obligatòria l'autentificació per JWT en tots els accessos als URL del microservei, fent servir middlewares per validar al token.
+/login permet accedir com a administrador amb usuari/ària i contrasenya i retorna un token que introduirem al header.authorization Bearer Token, és imprescindible introduir-lo per poder accedir a tots els serveis de les rutes exceptua'n /login.
