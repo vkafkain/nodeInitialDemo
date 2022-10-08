@@ -42,7 +42,7 @@ const playerRoll = async (req, res) => {
       roll,
     });
   } catch (error) {
-    return res.status(400).json({ error });
+    return res.status(400).json({ msg: 'Roll dices error' });
   }
 };
 

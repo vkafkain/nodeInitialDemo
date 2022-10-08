@@ -3,10 +3,10 @@ const { Player } = require("../models/Player");
 const getRanking = async (req, res) => {
   try {
     const ranking = await Player.findAll({
-      attributes: ["id", "name", "games", "gamesWin", "winRate"],
+      attributes: ["id", "name", "gamesPlayed", "gamesWin", "winRate"],
       order: [
         ["winRate", "DESC"],
-        ["games", "DESC"],
+        ["gamesPlayed", "DESC"],
       ],
     });
 
@@ -24,7 +24,7 @@ const getLoser = async (req, res) => {
   try {
     
     let loser = await Player.findOne({
-      attributes: ["id", "name", "games", "gamesWin", "winRate"],
+      attributes: ["id", "name", "gamesPlayed", "gamesWin", "winRate"],
       order: [["winRate", "ASC"]],
     });
 
@@ -37,7 +37,7 @@ const getLoser = async (req, res) => {
 const getWinner = async (req, res) => {
   try {
     let winner = await Player.findOne({
-      attributes: ["id", "name", "games", "gamesWin", "winRate"],
+      attributes: ["id", "name", "gamesPlayed", "gamesWin", "winRate"],
       order: [["winRate", "DESC"]],
     });
     res.status(200).json(winner);
