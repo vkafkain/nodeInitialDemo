@@ -32,7 +32,7 @@ const playerRoll = async (req, res) => {
     const countWins = await Game.count({
       where: { PlayerId: PlayerId, veredict: "win" },
     });
-    console.log(countGames, countWins);
+
     await Player.update(
       { winRate: (countWins / countGames) * 100 },
       { where: { id: PlayerId } }
@@ -42,7 +42,7 @@ const playerRoll = async (req, res) => {
       roll,
     });
   } catch (error) {
-    return res.status(400).json({ msg: 'Roll dices error' });
+    return res.status(400).json({ msg: "Roll dices error" });
   }
 };
 
