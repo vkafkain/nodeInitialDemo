@@ -17,7 +17,7 @@ async function connecSQLDB() {
     (err, result) => {
       console.log("Database created");
       if (err) throw err;
-      sequelize.sync({ force: true })
+      sequelize.sync({ force: false })
         .then(() => console.log("Database connected"))
         .catch((err) => console.log(err));
     }
