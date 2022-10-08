@@ -5,7 +5,7 @@ const rollDices = require("../services/letsRoll");
 const playerRoll = async (req, res) => {
   const PlayerId = req.params.id;
   const { dice1, dice2, rollScore, veredict } = rollDices();
-  try {
+/*   try {
     const roll = await Game.create({
       dice1,
       dice2,
@@ -50,7 +50,7 @@ const playerRoll = async (req, res) => {
     });
   } catch (error) {
     return res.status(400).json({ message: "Game Error" });
-  }
+  } */
 };
 
 const deleteGames = async (req, res) => {
