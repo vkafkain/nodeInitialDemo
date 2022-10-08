@@ -2,10 +2,15 @@ const { Sequelize } = require("sequelize");
 const mysql = require("mysql2");
 const config = require("../config/database");
 
-const sequelize = new Sequelize(config.database, config.username, config.password, {
-  host: config.host,
-  dialect: config.dialect,
-});
+const sequelize = new Sequelize(
+  config.database,
+  config.username,
+  config.password,
+  {
+    host: config.host,
+    dialect: config.dialect,
+  }
+);
 async function connecSQLDB() {
   const connection = mysql.createConnection({
     host: config.host,
@@ -17,7 +22,8 @@ async function connecSQLDB() {
     (err, result) => {
       console.log("Database created");
       if (err) throw err;
-      sequelize.sync({ force: false })
+      sequelize
+        .sync({ force: false })
         .then(() => console.log("Database connected"))
         .catch((err) => console.log(err));
     }
