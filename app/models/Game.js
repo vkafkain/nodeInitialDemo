@@ -23,4 +23,4 @@ const Game = sequelize.define(
   }
 );
 
-module.exports = { Game }
+module.exports = { Game };
