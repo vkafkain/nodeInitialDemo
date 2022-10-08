@@ -13,6 +13,7 @@ const Player = sequelize.define(
     name: {
       type: DataTypes.STRING,
       unique: true,
+      defaultValue: 'ANONYMOUS'
     },
     gamesPlayed: {
       type: DataTypes.STRING,
