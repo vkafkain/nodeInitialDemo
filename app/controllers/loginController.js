@@ -6,13 +6,13 @@ const showToken = (req, res) => {
 
   if (name !== "admin" && password !== loginConfig.secret) {
     res.status(401).json({ msg: "wrong credentials" });
-} else {
+  } else {
     const uniqueToken = createJWT(name);
-    res.header('authorization', uniqueToken).json({
-        msg: "Authorization as administrator has been successful",
-        token : uniqueToken
-    })
-}
+    res.header("authorization", uniqueToken).json({
+      msg: "Authorization as administrator has been successful",
+      token: uniqueToken,
+    });
+  }
 };
 
 module.exports = { showToken };
