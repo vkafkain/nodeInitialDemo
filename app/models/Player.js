@@ -1,6 +1,6 @@
 const { DataTypes } = require("sequelize");
 const { sequelize } = require("../database/dbSQL");
-const { Game } = require("./Game")
+const { Game } = require("./Game");
 
 const Player = sequelize.define(
   "Player",
@@ -13,7 +13,7 @@ const Player = sequelize.define(
     name: {
       type: DataTypes.STRING,
       unique: true,
-      defaultValue: 'ANONYMOUS'
+      defaultValue: "ANONYMOUS",
     },
     gamesPlayed: {
       type: DataTypes.STRING,
@@ -39,4 +39,4 @@ const Player = sequelize.define(
 Player.hasMany(Game, { onDelete: "cascade" });
 Game.belongsTo(Player);
 
-module.exports = { Player }
+module.exports = { Player };
