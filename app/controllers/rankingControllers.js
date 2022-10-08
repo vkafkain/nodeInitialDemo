@@ -22,7 +22,6 @@ const getRanking = async (req, res) => {
 
 const getLoser = async (req, res) => {
   try {
-    
     let loser = await Player.findOne({
       attributes: ["id", "name", "gamesPlayed", "gamesWin", "winRate"],
       order: [["winRate", "ASC"]],
