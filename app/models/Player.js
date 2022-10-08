@@ -14,7 +14,7 @@ const Player = sequelize.define(
       type: DataTypes.STRING,
       unique: true,
     },
-    games: {
+    gamesPlayed: {
       type: DataTypes.STRING,
       defaultValue: 0,
     },
@@ -23,7 +23,7 @@ const Player = sequelize.define(
       defaultValue: 0,
     },
     winRate: {
-      type: DataTypes.DECIMAL(10, 2),
+      type: DataTypes.DECIMAL(5, 2),
       defaultValue: 0,
     },
   },

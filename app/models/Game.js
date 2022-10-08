@@ -14,7 +14,7 @@ const Game = sequelize.define(
       type: DataTypes.INTEGER,
     },
     veredict: {
-      type: DataTypes.STRING,
+      type: DataTypes.CHAR,
     },
   },
   {
