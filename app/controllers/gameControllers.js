@@ -5,7 +5,6 @@ const rollDices = require("../services/letsRoll");
 const playerRoll = async (req, res) => {
   const PlayerId = req.params.id;
   const { dice1, dice2, rollScore, veredict } = rollDices();
-
   try {
     const roll = await Game.create({
       dice1,
@@ -18,22 +17,27 @@ const playerRoll = async (req, res) => {
     let arrayGames = [];
 
     if (veredict === "win") {
-      Player.increment(["games", "gamesWin"], { where: { id: PlayerId } });
+      Player.increment(["gamesPlayed", "gamesWin"], {
+        where: { id: PlayerId },
+      });
     }
     if (veredict === "lose") {
-      Player.increment(["games"], { where: { id: PlayerId } });
+      Player.increment(["gamesPlayed"], { where: { id: PlayerId } });
     }
-
     const player = await Player.findAll({
-      attributes: ["games", "gamesWin"],
+      attributes: ["gamesPlayed", "gamesWin"],
       where: { id: PlayerId },
     });
+    console.log(player);
 
     arrayGames.push(player);
 
-    const { games, gamesWin } = arrayGames[0][0].dataValues;
-    const winRate = (gamesWin / games) * 100;
+    const { gamesPlayed, gamesWin } = arrayGames[0][0].dataValues;
+    console.log(gamesWin, gamesPlayed);
+    const winRate = (gamesWin / gamesPlayed) * 100;
+
     await Player.update({ winRate }, { where: { id: PlayerId } });
+    console.log(player);
 
     const playerRolled = await Player.findAll({
       attributes: ["name"],
@@ -87,4 +91,4 @@ const getGames = async (req, res) => {
   }
 };
 
-module.exports = {  playerRoll, deleteGames, getGames };
+module.exports = { playerRoll, deleteGames, getGames };

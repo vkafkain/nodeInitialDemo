@@ -22,10 +22,12 @@ const getRanking = async (req, res) => {
 
 const getLoser = async (req, res) => {
   try {
+    
     let loser = await Player.findOne({
       attributes: ["id", "name", "games", "gamesWin", "winRate"],
       order: [["winRate", "ASC"]],
     });
+
     res.status(200).json(loser);
   } catch (error) {
     return res.status(404).json({ message: "Error getting looser" });
