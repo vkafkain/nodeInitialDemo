@@ -7,11 +7,10 @@ const auth = (req, res, next) => {
   } else {
     let token = req.headers.authorization.split(" ")[1];
 
-    jwt.verify(token, config.secret, (err, decoded) => {
+    jwt.verify(token, config.secret, (err) => {
       if (err) {
         res.status(400).json({ msg: "Error Encoding", err });
       } else {
-        console.log(decoded);
         next();
       }
     });
