@@ -37,7 +37,7 @@ const playerRoll = async (req, res) => {
       { winRate: (countWins / countGames) * 100 },
       { where: { id: PlayerId } }
     );
-    res.status(200).json({
+    res.status(201).json({
       playerRolled,
       roll,
     });
@@ -63,7 +63,7 @@ const deleteGames = async (req, res) => {
 
     const player = await Player.findAll({ where: { id: id } });
 
-    res.status(200).json({
+    res.status(205).json({
       player,
     });
   } catch (error) {
