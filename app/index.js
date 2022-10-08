@@ -1,6 +1,6 @@
 const app = require("./app");
 const { connecSQLDB } = require("./database/dbSQL");
-const config = require('./config/database');
+const config = require("./config/database");
 
 async function main() {
   try {
