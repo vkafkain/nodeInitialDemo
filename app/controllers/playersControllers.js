@@ -28,14 +28,22 @@ const getPlayer = async (req, res) => {
 
 const createPlayer = async (req, res) => {
   try {
-    const { name } = req.body;
-    name ? true : (NAME = "ANONYMOUS");
-    const newPlayer = await Player.create({
-      name,
-    });
-    res.status(201).json({ player: newPlayer });
+    const name = req.body.name;
+    let player = "";
+    if (name) {
+      const findName = await Player.findOne({
+        where: { name: name },
+      });
+      if (findName) {
+        return res.status(400).json({ message: "name already exists" });
+      }
+      player = await Player.create({ name: name.toLowerCase() });
+    } else {
+      player = await Player.create({ name: "ANONYMOUS" });
+    }
+    res.status(201).json(player);
   } catch (error) {
-    return res.status(400).json({ message: "Unable to create player" });
+    return res.status(400).json({ message: "Unable to create player", error });
   }
 };
 
