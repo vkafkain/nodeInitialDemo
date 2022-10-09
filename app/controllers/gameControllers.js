@@ -63,7 +63,7 @@ const deleteGames = async (req, res) => {
 
     const player = await Player.findAll({ where: { id: id } });
 
-    res.status(205).json({
+    res.status(200).json({
       player,
     });
   } catch (error) {
