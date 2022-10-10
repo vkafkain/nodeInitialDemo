@@ -1,14 +1,15 @@
-const app = require('./app')
-const { connecSQLDB } = require('./database/dbSQL');
+const app = require("./app");
+const { connecSQLDB } = require("./database/dbSQL");
+const config = require("./config/database");
 
 async function main() {
-  try{  
+  try {
     await connecSQLDB();
-    app.listen(3000);
-    console.log("Server is listening on port", 3000);
-} catch(error) {
+    app.listen(config.port);
+    console.log(`Server is listening on port, ${config.port}`);
+  } catch (error) {
     console.log("Unable to connect to the database");
-    }
+  }
 }
 
 main();

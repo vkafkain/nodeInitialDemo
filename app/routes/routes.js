@@ -1,15 +1,14 @@
-const {Router} = require('express');
-const router =  Router();
-const playerRouter = require('./players');
-const gamesRouter = require('./games');
-const rankingRouter = require('./ranking');
+const { Router } = require("express");
+const auth = require("../middlewares/login");
+const router = Router();
+const playerRouter = require("./players");
+const gamesRouter = require("./games");
+const rankingRouter = require("./ranking");
+const loginRouter = require("./login");
 
-router.use('/players', playerRouter);
-router.use('/games', gamesRouter);
-router.use('/ranking', rankingRouter);
-
-//TODO dar nombre anonimo a los anonimos
-//TODO revisar tabulacion etc
-//TODO separar routes en tipo
+router.use("/players", auth, playerRouter);
+router.use("/games", auth, gamesRouter);
+router.use("/ranking", auth, rankingRouter);
+router.use("/login", loginRouter);
 
 module.exports = router;
