@@ -21,7 +21,7 @@ Necessitem instal·lar els mòduls necessaris. Hem de introduïr els següent co
 
 Un cop hem instal·lat els diferents paquets hem d'iniciar el servidor amb la següent línia de codi.
 
-    node app/index.js
+    npm run start
 
 ## POSTMAN 📬
 
@@ -36,7 +36,7 @@ Finalment, amb la col·lecció ja importada a postman fem clic en Run, això exe
 
 ### IMPORTANT 
 
-La primera request que hem d'enviar del postman és "admin genera JWT", aquesta ens retornarà un token i l'haurem d'introduir a les següents request, concretament a Authorization seleccionem Bearer Token e introduïm el token.
+La primera request que hem d'enviar del postman és "admin genera JWT", aquesta ens retornarà un token i l'haurem d'introduir a les següents request, concretament a Authorization seleccionem Bearer Token i introduïm el token.
 
 ## RUTES 🌌
 
