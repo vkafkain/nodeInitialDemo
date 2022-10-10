@@ -8,7 +8,7 @@ Hem fet servir els següents moduls de npm:
     - jsonwebtoken => Crea tokens únics
     - dotenv => Ens ajuda a fer servir les variables d'entorn
     - sequelize => Ens permet interactuar amb les bases de dades SQL
-    - mysql2 => Ens permet crear connexions amb la base de dades, i introduir query tipades
+    - mysql2 => Ens permet crear connexions amb la base de dades.
 
 
 ## Què necessitem per fer-lo funcionar? 🧞
