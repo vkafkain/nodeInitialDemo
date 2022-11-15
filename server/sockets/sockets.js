@@ -130,6 +130,7 @@ const sockets = async (io) => {
         let currentUsers = await userControllers.getUsers(
           disconnectedUser.room
         );
+        console.log(`user ${user.userName} disconnected`);
 
         io.emit("update-room-users", disconnectedUser.room, currentUsers.users);
       } else {

@@ -1,14 +1,6 @@
 const { Rooms } = require("../models/models.js");
 
 const roomsControllers = {
-  async initMain() {
-    const roomExist = await Rooms.findOne({ roomName: "Main" });
-
-    if (!roomExist) {
-     const room = await Rooms.create({ roomName: "Main" });
-    }
-  },
-
 
   async createRoom(roomName) {
     

@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const { Rooms } = require("../models/models");
 
 const connectDB = async () => {
   try {
@@ -10,6 +11,11 @@ const connectDB = async () => {
     console.log(`Connected to ${process.env.DB_NAME}`);
   } catch (err) {
     console.log(err.message);
+  }
+
+  const roomFind = await Rooms.findOne( { roomName: "Main" } );
+  if(!roomFind) {
+    const room = await Rooms.create( {roomName: "Main"});
   }
 };
 

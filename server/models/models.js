@@ -17,6 +17,7 @@ const roomsSchema = new mongoose.Schema(
         user: { userName: String, userId: String },
         room: { roomName: String, roomId: String },
         text: String,
+        dateText: Date,
       },
     ],
   },
@@ -25,5 +26,6 @@ const roomsSchema = new mongoose.Schema(
 
 const Users = mongoose.model("Users", usersSchema);
 const Rooms = mongoose.model("Rooms", roomsSchema);
+
 
 module.exports = { Users, Rooms };

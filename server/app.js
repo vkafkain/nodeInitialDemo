@@ -6,7 +6,6 @@ const http = require("http").Server(app);
 const connectDB = require("./database/connectDB");
 const sockets = require("./sockets/sockets")
 const routes = require("./routes/routes");
-const { initMain } = require("./controllers/roomsControllers");
 
 const io = require("socket.io")(http, {
   cors: {
@@ -28,9 +27,6 @@ app.use(routes)
 app.use((req, res) =>
 res.status(404).send({ status: "fail", message: "PAGE NOT FOUND" })
 );
-
-//iniciamos la sala principal
-initMain();
 
 // Sockets
 sockets(io);
