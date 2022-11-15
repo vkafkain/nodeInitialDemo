@@ -32,7 +32,7 @@ document.querySelector(".entry-form").addEventListener('submit', e => {
     .then(data => {
         if (data.status === 'ok') {
             
-            window.location.replace('../index.html')
+            window.location.replace('./index.html')
         } else {
             registerError.innerHTML = data.message;
         }

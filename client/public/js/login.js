@@ -34,7 +34,7 @@ document.querySelector(".entry-form").addEventListener("submit", (e) => {
           sessionStorage.token = data.token;
 
           // Go to chat window
-          window.location.assign("./html/chat.html");
+          window.location.assign("./chat.html");
         }
       } else {
         document.getElementById("login-error").innerHTML = data.message;
