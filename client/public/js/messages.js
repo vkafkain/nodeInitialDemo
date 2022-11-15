@@ -1,5 +1,5 @@
 const sendMessage = () => {
-  //retrieve message from chat-form input, room and user from sessionStorage
+ 
   const text = document.querySelector(
     '.chat-form input[name="newMessage"]'
   ).value;
@@ -11,10 +11,10 @@ const sendMessage = () => {
     roomId: sessionStorage.roomId,
     roomName: sessionStorage.roomName,
   };
+
  console.log(user);
-  //send obj with message, room and user info to backend
   if (text) {
-    let message = { user, room, text };
+    let message = { user, room, text};
     socket.emit("new-message", message);
     displayMessage(message);
     document.querySelector('.chat-form input[name="newMessage"]').value = "";
