@@ -70,8 +70,8 @@ const userControllers = {
       let users = await Users.find({ "room.roomId": room.roomId });
       users = users.map(({ _id, userName }) => ({ userId: _id, userName }));
       return { status: "ok", users };
-    } catch (err) {
-      return { status: "error", message: err.message };
+    } catch (error) {
+      return { status: "error", message: error.message };
     }
   },
 
