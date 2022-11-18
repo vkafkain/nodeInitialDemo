@@ -16,8 +16,8 @@ const roomsSchema = new mongoose.Schema(
       {
         user: { userName: String, userId: String },
         room: { roomName: String, roomId: String },
-        text: String,
-        dateText: Date,
+        text:  String,
+        time: {type: Date, default: Date.now}
       },
     ],
   },
