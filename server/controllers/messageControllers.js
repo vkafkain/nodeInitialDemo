@@ -16,10 +16,11 @@ const messageControllers = {
       }
 
       if (roomFind.messages !== null) {
-        messages = roomFind.messages.map(({ user, room, text }) => ({
+        messages = roomFind.messages.map(({ user, room, text, time }) => ({
           user,
           room,
           text,
+          time,
         }));
       }
 
@@ -37,8 +38,8 @@ const messageControllers = {
       );
       return findRoom = { status: "ok", message };
       
-    } catch (err) {
-      return { status: "error", message: err.message };
+    } catch (error) {
+      return { status: "error", message: error.message };
     }
   },
 };
