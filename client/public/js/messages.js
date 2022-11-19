@@ -1,8 +1,12 @@
 const sendMessage = () => {
  
+   const dt = new Date();
+  let time =  dt.getHours() + ":" + dt.getMinutes() + ":" + dt.getSeconds();
+
   const text = document.querySelector(
     '.chat-form input[name="newMessage"]'
   ).value;
+
   const user = {
     userId: sessionStorage.userId,
     userName: sessionStorage.userName,
@@ -12,9 +16,10 @@ const sendMessage = () => {
     roomName: sessionStorage.roomName,
   };
 
- console.log(user);
+  
   if (text) {
     let message = { user, room, text};
+
     socket.emit("new-message", message);
     displayMessage(message);
     document.querySelector('.chat-form input[name="newMessage"]').value = "";
@@ -29,7 +34,9 @@ const displayMessage = (message) => {
   let messageList = document.getElementById("messageList");
   //create element with current message to append to current message list
   let li = document.createElement("li");
-  li.classList.add("chat-li");
+
+  li.classList.add("chat-li")
+  
   li.textContent = message.text;
 
   //retrieve last inserted ul element
