@@ -16,8 +16,8 @@ li {
   list-style: none;
   padding: 0.2rem;
   margin: auto;
-  
-  font-family: "MS Sans Serif";;
+
+  font-family: "MS Sans Serif";
 }
 
 h2 {
@@ -381,9 +381,9 @@ p.title {
 }
 
 .welcome {
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: "IBM Plex Mono", monospace;
 }
 
-.userSays{
+.userSays {
   color: red;
 }
