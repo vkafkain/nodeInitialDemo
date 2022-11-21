@@ -10,16 +10,14 @@ document.querySelector(".entry-form").addEventListener('submit', e => {
     const registerError = document.querySelector("#register-error");
     const apiUrl = 'http://localhost:3000';
 
-    //check for void username or spaces
     const regex = /\s/;
     if(regex.test(userName)){
-        registerError.innerHTML = 'White-space alert! Not a valid username.';
+        registerError.innerHTML = 'El nombre de usuario no es válido';
         return;
     }
 
-     //checking if repeted password matches original 
     if (password !== rePassword) {
-        registerError.innerHTML = 'Passwords do not match.';
+        registerError.innerHTML = 'Los passwords no coinciden';
         return;
     }
    

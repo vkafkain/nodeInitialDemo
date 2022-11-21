@@ -17,7 +17,6 @@ document.querySelector(".entry-form").addEventListener("submit", (e) => {
     .then((res) => res.json())
     .then((data) => {
       if (data.status === "ok") {
-        //avoid multiple sessions
         console.log(sessionStorage.userId, data.user.userId);
         if (
           sessionStorage.userId == data.user.userId &&
@@ -27,13 +26,10 @@ document.querySelector(".entry-form").addEventListener("submit", (e) => {
             "You already have a session.";
         } else {
           sessionStorage.clear();
-
-          // Store session variables
           sessionStorage.userId = data.user.userId;
           sessionStorage.userName = data.user.userName;
           sessionStorage.token = data.token;
 
-          // Go to chat window
           window.location.assign("./chat.html");
         }
       } else {
