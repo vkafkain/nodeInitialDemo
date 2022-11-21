@@ -16,11 +16,10 @@ const messageControllers = {
       }
 
       if (roomFind.messages !== null) {
-        messages = roomFind.messages.map(({ user, room, text, time }) => ({
+        messages = roomFind.messages.map(({ user, room, text }) => ({
           user,
           room,
           text,
-          time,
         }));
       }
 
