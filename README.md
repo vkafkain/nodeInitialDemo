@@ -44,48 +44,52 @@ Instalaremos los modulos necesarios para el funcionamiento del chat con el sigui
     npm install
 ```
 
+¡Muy importante! Cambiar el nombre del archivo .env-template a solo .env.
+
 ## Ejecutar
 
 Una vez hemos instalado todo tenemos que ejecutar tanto en la ruta del servidor chat-v.3.0/server, como en la ruta del cliente chat-v.3.0/client el comando: 
 ```
     npm run start
-```
 Esto nos inicializa el servidor, la base de datos y el cliente.
+```
 
 ## Arquitectura del proyecto
 
 Estructura:
 
+Client
+
+![Demo](https://github.com/vkafkain/Jump2Digital_2022_Backend/blob/main/docs/01.png)
+
+Server
+
 ![Demo](https://github.com/vkafkain/Jump2Digital_2022_Backend/blob/main/docs/01.png)
 
 ## Rutas
 
-_Obtener compañías ordenadas por tamaño - GET_
+_Registrar usuario - POST_
 ```
-http://localhost:3000/companies/size
-```
-
-_Obtener compañías ordenadas por fecha de creación - GET_
-```
-http://localhost:3000/companies/date
+http://localhost:3000/users/register
 ```
 
-_Obtener número de empresas de cada industria, rango de tamaños y año de creación - GET_
+_Login ususario - POST_
 ```
-http://localhost:3000/companies/count
+http://localhost:3000/users/login
 ```
-## POSTMAN
-
-En la direccion /POSTMAN/Jump2Digital.postman_collection.json
-
 
 ## Programas utilizados
 
+* [HTML](https://developer.mozilla.org/es/docs/Web/HTML) - Lenguaje de Marcas de Hipertexto.
+* [CSS](https://developer.mozilla.org/es/docs/Web/CSS) - Hojas de Estilo en Cascada.
 * [JavaScript](https://developer.mozilla.org/es/docs/Web/JavaScript) - Lenguaje de programación utilizado.
 * [Node.js](https://nodejs.org/es/docs/) - Entorno para ejecutar JavaScript del lado del servidor.
 * [Express](https://www.npmjs.com/package/express) - Framework de node.js.
 * [NPM](https://www.npmjs.com/) - Administrador de dependencias.
 * [Mongoose](https://mongoosejs.com/) - Dependencia que nos ayuda a gestionar datos con MongoDB.
+* [Socket.io](https://socket.io/) -  Esta biblioteca javascript permite la comunicación bidireccional en tiempo real.
+* [JWT](https://jwt.io/) -  JSON Web Token (abreviado JWT) es un estándar abierto basado en JSON propuesto por IETF (RFC 7519) para la creación de tokens de acceso.
+* [bcrypt](https://www.npmjs.com/package/bcrypt) - bcrypt es un algoritmo diseñado específicamente para hash de contraseñas. MD5 y SHA1 son algoritmos de hash de propósito general.
 
 
 ## Autor
