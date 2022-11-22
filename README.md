@@ -38,7 +38,7 @@ Para que el proyecto funcione tenemos que instalar previamente:
 - [Postman](https://www.postman.com/)
 
 
-```
+
 Instalaremos los modulos necesarios para el funcionamiento del chat con el siguiente comando por terminal:
 ```
     npm install
@@ -50,9 +50,15 @@ Instalaremos los modulos necesarios para el funcionamiento del chat con el sigui
 
 Una vez hemos instalado todo tenemos que ejecutar tanto en la ruta del servidor chat-v.3.0/server, como en la ruta del cliente chat-v.3.0/client el comando: 
 ```
-    npm run start
-Esto nos inicializa el servidor, la base de datos y el cliente.
+ npm run start
 ```
+
+Esto nos inicializa el servidor, la base de datos y el cliente.
+
+Una vez tenemos tanto el servidor del back como el del cliente escuchando, abrimos una pagina web con nuestro navegador favorito en la siguiente direccion:
+
+http://127.0.0.1:5500/client/public/html/index.html
+
 
 ## Arquitectura del proyecto
 
@@ -60,11 +66,11 @@ Estructura:
 
 Client
 
-![Demo](https://github.com/vkafkain/Jump2Digital_2022_Backend/blob/main/docs/01.png)
+![Demo](https://github.com/vkafkain/nodeInitialDemo/blob/chat/docs/client.png)
 
 Server
 
-![Demo](https://github.com/vkafkain/Jump2Digital_2022_Backend/blob/main/docs/01.png)
+![Demo](https://github.com/vkafkain/nodeInitialDemo/blob/chat/docs/server.png)
 
 ## Rutas
 
