@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "149fb2a3-905b-41f1-ad3a-1d41adec2665",
+		"_postman_id": "95c79f57-8a73-49ef-abb5-9eb0b6590831",
 		"name": "Postman collection 4.1",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "23319367"
@@ -36,7 +36,7 @@
 						{
 							"key": "images",
 							"type": "file",
-							"src": "/Users/vkafka/Desktop/Projects_IT/nodeInitialDemo/images/resaca.png"
+							"src": "Projects_IT/nodeInitialDemo/images/resaca.png"
 						}
 					]
 				},
@@ -65,7 +65,7 @@
 						{
 							"key": "images",
 							"type": "file",
-							"src": "/Users/vkafka/Desktop/Projects_IT/nodeInitialDemo/images/test.txt"
+							"src": "Projects_IT/nodeInitialDemo/images/test.txt"
 						}
 					]
 				},
