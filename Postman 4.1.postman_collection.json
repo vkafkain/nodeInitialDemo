@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "4f32d60e-a8d9-4f89-a48b-14abaeeae065",
+		"_postman_id": "149fb2a3-905b-41f1-ad3a-1d41adec2665",
 		"name": "Postman collection 4.1",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "23319367"
@@ -36,7 +36,7 @@
 						{
 							"key": "images",
 							"type": "file",
-							"src": "/C:/Users/usuario/Desktop/nodeInitialDemo/images/resaca.png"
+							"src": "/Users/vkafka/Desktop/Projects_IT/nodeInitialDemo/images/resaca.png"
 						}
 					]
 				},
@@ -65,7 +65,7 @@
 						{
 							"key": "images",
 							"type": "file",
-							"src": "/C:/Users/usuario/Desktop/nodeInitialDemo/images/test.txt"
+							"src": "/Users/vkafka/Desktop/Projects_IT/nodeInitialDemo/images/test.txt"
 						}
 					]
 				},
@@ -86,6 +86,9 @@
 		{
 			"name": "Ex2N1",
 			"request": {
+				"auth": {
+					"type": "noauth"
+				},
 				"method": "POST",
 				"header": [
 					{
@@ -101,7 +104,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{ \"nom\": \"Victor\"}",
+					"raw": "{\n    \"name\": \"Victor\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -123,13 +126,74 @@
 			"response": []
 		},
 		{
-			"name": "EX2N2",
+			"name": "Ex2N2 with correct auth",
 			"request": {
+				"auth": {
+					"type": "noauth"
+				},
 				"method": "POST",
-				"header": [],
+				"header": [
+					{
+						"key": "user",
+						"value": "admin",
+						"type": "text"
+					},
+					{
+						"key": "pass",
+						"value": "1234",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "raw",
-					"raw": "{ \"nom\": \"Victor\"}"
+					"raw": "{\n    \"name\": \"Victor\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/time",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"time"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Ex2N2 without correct auth",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "user",
+						"value": "admin",
+						"type": "text"
+					},
+					{
+						"key": "pass",
+						"value": "12345",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Victor\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
 				},
 				"url": {
 					"raw": "http://localhost:3000/time",
@@ -149,24 +213,12 @@
 			"name": "Ex3N1",
 			"request": {
 				"auth": {
-					"type": "basic",
-					"basic": [
-						{
-							"key": "password",
-							"value": "\"1234\"",
-							"type": "string"
-						},
-						{
-							"key": "username",
-							"value": "\"admin\"",
-							"type": "string"
-						}
-					]
+					"type": "noauth"
 				},
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3000/pokemon/39",
+					"raw": "http://localhost:3000/pokemon/12",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -174,7 +226,7 @@
 					"port": "3000",
 					"path": [
 						"pokemon",
-						"39"
+						"12"
 					],
 					"query": [
 						{
