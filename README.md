@@ -1,7 +1,5 @@
 # Win95 Chat
 
-This API has been developed by Víctor López.
-
 Application created for Sprint 5 ItAcademy Formació mentoritzada Nodejs.
 
 ## Objetivos
@@ -97,10 +95,6 @@ http://localhost:3000/users/login
 * [JWT](https://jwt.io/) -  JSON Web Token (abreviado JWT) es un estándar abierto basado en JSON propuesto por IETF (RFC 7519) para la creación de tokens de acceso.
 * [bcrypt](https://www.npmjs.com/package/bcrypt) - bcrypt es un algoritmo diseñado específicamente para hash de contraseñas. MD5 y SHA1 son algoritmos de hash de propósito general.
 
-
-## Autor
-
-* Github [Víctor López](https://github.com/vkafkain)  |  Email vlopezmoles@gmail.com
 
 ## License
 
