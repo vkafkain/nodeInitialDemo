@@ -95,6 +95,13 @@ http://localhost:3000/users/login
 * [JWT](https://jwt.io/) -  JSON Web Token (abreviado JWT) es un estándar abierto basado en JSON propuesto por IETF (RFC 7519) para la creación de tokens de acceso.
 * [bcrypt](https://www.npmjs.com/package/bcrypt) - bcrypt es un algoritmo diseñado específicamente para hash de contraseñas. MD5 y SHA1 son algoritmos de hash de propósito general.
 
+## Mejoras pendientes
+
+- Google Authenticate
+- Añadir perfil de usuario
+- Poder modificar la contraseña
+- Hacer el front con REACT
+
 
 ## License
 
