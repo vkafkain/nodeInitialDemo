@@ -23,7 +23,7 @@ document.querySelector(".entry-form").addEventListener("submit", (e) => {
           sessionStorage.userName == data.user.userName
         ) {
           document.getElementById("login-error").innerHTML =
-            "You already have a session.";
+            "Ya tienes sesion iniciada.";
         } else {
           sessionStorage.clear();
           sessionStorage.userId = data.user.userId;
