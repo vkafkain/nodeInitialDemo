@@ -102,7 +102,6 @@ http://localhost:3000/users/login
 - Poder modificar la contraseña
 - Hacer el front con REACT
 
-
 ## License
 
 [MIT](https://opensource.org/licenses/MIT)
