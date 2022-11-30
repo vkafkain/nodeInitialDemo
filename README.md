@@ -98,9 +98,9 @@ http://localhost:3000/users/login
 
 ## Mejoras pendientes
 
-- Google Authenticate
+- Google Authenticate   -> Actualmente en desarrollo 
 - Añadir perfil de usuario
-- Poder modificar la contraseña
+- Poder modificar la contraseña del usuario
 - Hacer el front con REACT
 
 ## License
