@@ -55,7 +55,8 @@ Esto nos inicializa el servidor, la base de datos y el cliente.
 
 Una vez tenemos tanto el servidor del back como el del cliente escuchando, abrimos una pagina web con nuestro navegador favorito en la siguiente direccion:
 
-http://127.0.0.1:5500/client/public/html/index.html
+    http://localhost:8080
+
 
 
 ## Arquitectura del proyecto
