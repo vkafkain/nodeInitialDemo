@@ -1,4 +1,4 @@
-const { Rooms } = require("../models/models.js");
+const { Rooms } = require("../models/Room");
 
 const messageControllers = {
   async getMessages(room) {

@@ -1,23 +1,21 @@
 const jwt = require('jsonwebtoken');
-//const bcrypt = require('bcrypt');
 const bcrypt = require('bcryptjs');
-
-const {Users} = require('../models/models.js');
+const {Users} = require('../models/User');
 
 const authentication = async(req, res, next) => {
 
     const userName = req.body.userName;
     const password = req.body.password;
      
-    //check if credentials provided
+    
     if (!userName) return res.status(400).send({ status: "fail", message: `username not provided`});
     if (!password) return res.status(400).send({ status: "fail", message: `password not provided`});
 
-    // Check if user exists
+
     const user = await Users.find({userName});
     if(!user.length) return res.status(400).send({ status: "fail", message: `Wrong username`});
 
-    // Check if password is correct
+    
     if (!await bcrypt.compare(password, user[0].password)) {
         return res.status(400).send({
             status: 'fail',
@@ -26,7 +24,7 @@ const authentication = async(req, res, next) => {
     }
     next()
 }
-//authenticate web token
+
 const authJWT = async (req, res, next) => {
     const authHeader = req.headers['authorization']
     const token = authHeader && authHeader.split(' ')[1] 

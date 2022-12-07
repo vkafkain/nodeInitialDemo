@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const { Rooms } = require("../models/models");
+const { Rooms } = require("../models/Room");
 
 const connectDB = async () => {
   try {
